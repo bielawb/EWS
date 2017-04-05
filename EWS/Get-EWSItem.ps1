@@ -6,8 +6,8 @@ function Get-EWSItem {
     param (
 
         # Filter that will be used to retrieve items.
-        [Parameter(Position = 0)]
         [Parameter(
+                Position = 0,
                 Mandatory
         )]
         [string]$Filter,
