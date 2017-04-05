@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Types>
+    <Type>
+        <Name>Microsoft.Exchange.WebServices.Data.EmailMessage</Name>
+        <Members>
+            <ScriptProperty >
+                <Name>BodyText</Name>
+                <GetScriptBlock>
+                    switch ($this.Body.BodyType) {
+                        HTML {
+                            $html = New-Object -ComObject htmlfile
+                            $html.IHTMLDocument2_write($this.Body.Text)
+                            $html.body.innerText
+                        }
+                        Text {
+                            $this.Body.Text
+                        }
+                        default {
+                            return
+                        }
+                    }
+                </GetScriptBlock>
+            </ScriptProperty>
+            <ScriptMethod>
+                <Name>BodyPreview</Name>
+                <Script>
+                    param ([int]$First = 10)
+                    switch ($this.Body.BodyType) {
+                        HTML {
+                            $html = New-Object -ComObject htmlfile
+                            $html.IHTMLDocument2_write($this.Body.Text)
+                            ($html.body.innerText.Split("`n") | select -First $First) -join "`n"
+                        }
+                        Text {
+                            ($this.Body.Text.Split("`n") | select -First $First) -join "`n"
+                        }
+                        default {
+                            return
+                        }
+                    }
+                </Script>
+            </ScriptMethod>
+        </Members>
+    </Type>
+</Types>
