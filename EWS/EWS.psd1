@@ -73,7 +73,7 @@ FormatsToProcess = @(
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
-NestedModules = 'Microsoft.Exchange.WebServices.dll'
+# NestedModules = @()
 
 # Functions to export from this module
 FunctionsToExport = @(
@@ -132,7 +132,7 @@ PrivateData = @{
         ProjectUri = 'https://github.com/bielawb/EWS'
 
         # A URL to an icon representing this module.
-        IconUri = '..\EWSModuleLogo.png'
+        IconUri = 'https://powershellpl.files.wordpress.com/2017/04/ewsmodulelogo.png'
 
         # ReleaseNotes of this module
         # ReleaseNotes = ''
