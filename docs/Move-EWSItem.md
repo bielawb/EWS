@@ -7,7 +7,7 @@ schema: 2.0.0
 # Move-EWSItem
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Moves item to a different location.
 
 ## SYNTAX
 
@@ -16,21 +16,30 @@ Move-EWSItem [-DestinationPath] <String> [-Item] <Item> [[-Service] <ExchangeSer
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Function used to move item from current location to the new location.
+Destination folder has to exist for move to succeed.
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-EWSItem -Name Inbox -Filter subject:test -Limit 1 | Move-EWSItem -DestinationPath Inbox\Moved
 ```
 
-{{ Add example description here }}
+First item found in Inbox with subject that contains word 'test' is moved to Inbox\Moved.
+
+### -------------------------- EXAMPLE 1 --------------------------
+```
+PS C:\> $item = Get-EWSFolder -Path Inbox\Moved | Get-EWSItem -Filter subject:test -Limit 1
+PS C:\> Move-EWSItem -DestinationPath Inbox -Folder $item
+```
+
+First item found in Inbox\Moved with subject that contains word 'test' is moved to Inbox.
 
 ## PARAMETERS
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Prompts you for confirmation before running the function.
 
 ```yaml
 Type: SwitchParameter
@@ -45,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -DestinationPath
-{{Fill DestinationPath Description}}
+Path to the folder where the item should be moved.
 
 ```yaml
 Type: String
@@ -60,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -Item
-{{Fill Item Description}}
+Item object that should be moved (retrieved using Get-EWSItem).
 
 ```yaml
 Type: Item
@@ -75,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-{{Fill Service Description}}
+Service object that will be used to move item.
 
 ```yaml
 Type: ExchangeService
@@ -90,8 +99,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the function runs.
+The function is not run.
 
 ```yaml
 Type: SwitchParameter

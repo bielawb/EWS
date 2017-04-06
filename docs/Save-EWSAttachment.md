@@ -21,7 +21,7 @@ Save-EWSAttachment [[-Path] <String>] [[-Attachment] <FileAttachment[]>] [[-Serv
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
 PS C:\> {{ Add example code here }}
 ```

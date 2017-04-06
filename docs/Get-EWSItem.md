@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-EWSItem
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets items inside selected mailbox and specified folder. 
 
 ## SYNTAX
 
@@ -24,21 +24,39 @@ Get-EWSItem [-Filter] <String> -Name <WellKnownFolderName> [-Service <ExchangeSe
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Functions used to get items from the selected folder inside mailbox.
+Filter is required and uses AQL syntax.
+You can read more about it here: https://msdn.microsoft.com/en-us/library/office/dn579420(v=exchg.150).aspx.
+
+Folders can be specified by Name (for well known folder names, like Inbox) or by Id (works for both well known and custom folders).
+For custom folders it's recommended to use Get-EWSFolder command first, and pipe results from it into Get-EWSItem.
+
+By default not all properties are returned - behavior that can be changed by specifying PropertySet.
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-EWSFolder Inbox\Urgent | Get-EWSItem -Filter subject:Call
 ```
 
-{{ Add example description here }}
+Gets all items in sub-folder 'Urgent' in Inbox of last connected service/mailbox.
+Items are filtered out and only items that have a word 'call' somewhere in the subject are returned.
+
+### -------------------------- EXAMPLE 2 --------------------------
+```
+PS C:\> Get-EWSItem -Name Inbox -Filter body:Azure -Limit 5
+```
+
+Gets all items in Inbox of last connected service/mailbox.
+Items are filtered out and only items that have a word 'Azure' somewhere in the body are returned.
+Results are limited to first 5 results.
 
 ## PARAMETERS
 
 ### -Filter
-{{Fill Filter Description}}
+Filter that will be used to get items needed.
+Uses AQL syntax (https://msdn.microsoft.com/en-us/library/office/dn579420(v=exchg.150).aspx)
 
 ```yaml
 Type: String
@@ -53,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-{{Fill Id Description}}
+Id of the folder that items will be retrieved from.
 
 ```yaml
 Type: FolderId
@@ -68,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -Limit
-{{Fill Limit Description}}
+Number of items that should be returned in total.
 
 ```yaml
 Type: Int32
@@ -83,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{Fill Name Description}}
+Name of the well known folder (e.g. Calendar, Inbox, Contacts)
 
 ```yaml
 Type: WellKnownFolderName
@@ -99,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -PageSize
-{{Fill PageSize Description}}
+Number of items tha should be returned per page of results.
 
 ```yaml
 Type: Int32
@@ -114,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -PropertySet
-{{Fill PropertySet Description}}
+Optional parameter used to change set of properties returned.
 
 ```yaml
 Type: BasePropertySet
@@ -130,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-{{Fill Service Description}}
+Service object that will be used to retrieve items.
 
 ```yaml
 Type: ExchangeService

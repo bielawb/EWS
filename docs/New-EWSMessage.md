@@ -28,7 +28,7 @@ New-EWSMessage -To <String[]> [-Cc <String[]>] [-Bcc <String[]>] -Subject <Strin
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
 PS C:\> {{ Add example code here }}
 ```

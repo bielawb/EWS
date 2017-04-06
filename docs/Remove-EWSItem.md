@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-EWSItem
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes item in a specified delete mode.
 
 ## SYNTAX
 
@@ -16,21 +16,33 @@ Remove-EWSItem [[-DeleteMode] <DeleteMode>] [[-Service] <ExchangeService>] [-Ite
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Function used to remove item in one of three ways:
+- HardDelete 
+- SoftDelete
+- MoveToDeletedItems.
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-EWSFolder -Path Inbox\ToDelete | Get-EWSItem -Filter IsRead:true | Remove-EWSItem
 ```
 
-{{ Add example description here }}
+Prompts user to confirm deletion of read (IsRead:true) items in Inbox\ToDelete folder.
+Once confirmed delete items using MoveToDeletedItems (default) DeleteMode.
+
+### -------------------------- EXAMPLE 1 --------------------------
+```
+PS C:\> $item = Get-EWSFolder -Path Inbox\ToDelete | Get-EWSItem -Filter IsRead:true -Limit 1
+PS C:\> Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false
+```
+
+Deletes first read (IsRead:true) item from Inbox\ToDelete folder using HardDelete mode.
 
 ## PARAMETERS
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Prompts you for confirmation before running the function.
 
 ```yaml
 Type: SwitchParameter
@@ -45,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeleteMode
-{{Fill DeleteMode Description}}
+Mode used to delete item. If not specified, MoveToDeletedItems mode is used.
 
 ```yaml
 Type: DeleteMode
@@ -61,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -Item
-{{Fill Item Description}}
+Item object that should be removed (retrieved using Get-EWSItem).
 
 ```yaml
 Type: Item
@@ -76,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-{{Fill Service Description}}
+Service object that will be used to remove item.
 
 ```yaml
 Type: ExchangeService
@@ -91,8 +103,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the function runs.
+The function is not run.
 
 ```yaml
 Type: SwitchParameter

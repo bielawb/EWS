@@ -7,7 +7,7 @@ schema: 2.0.0
 # Move-EWSFolder
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Moves folder to a different location.
 
 ## SYNTAX
 
@@ -17,21 +17,31 @@ Move-EWSFolder [-DestinationPath] <String> [-Folder] <Folder> [[-Service] <Excha
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Function used to move folder from current location to the new location.
+Destination folder has to exist for move to succeed.
+
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-EWSFolder -Path Inbox\Test | Move-EWSFolder -DestinationPath Inbox\Parent
 ```
 
-{{ Add example description here }}
+Folder 'Test' located inside Inbox is moved as a sub-folder to Inbox\Parent.
+
+### -------------------------- EXAMPLE 1 --------------------------
+```
+PS C:\> $folder = Get-EWSFolder -Path Inbox\Parent\Test 
+PS C:\> Move-EWSFolder -DestinationPath Inbox -Folder $folder
+```
+
+Folder 'Test' located inside Inbox\Parent is moved as a sub-folder to Inbox.
 
 ## PARAMETERS
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Prompts you for confirmation before running the function.
 
 ```yaml
 Type: SwitchParameter
@@ -46,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -DestinationPath
-{{Fill DestinationPath Description}}
+Path to the folder where the folder should be moved.
 
 ```yaml
 Type: String
@@ -61,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Folder
-{{Fill Folder Description}}
+Folder object that should be moved (retrieved using Get-EWSFolder).
 
 ```yaml
 Type: Folder
@@ -76,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-{{Fill Service Description}}
+Service object that will be used to move folder.
 
 ```yaml
 Type: ExchangeService
@@ -91,8 +101,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the function runs.
+The function is not run.
 
 ```yaml
 Type: SwitchParameter

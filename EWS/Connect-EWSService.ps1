@@ -3,18 +3,15 @@ function Connect-EWSService {
     [CmdletBinding()]
     param (
 		
-        # Mailbox that command will connect to.
         [Parameter(
                 Mandatory
         )]
         [String]$Mailbox,
         
 
-        # Version of exchange server that we will connect to.
         [Microsoft.Exchange.WebServices.Data.ExchangeVersion]
         $Version = [Microsoft.Exchange.WebServices.Data.ExchangeVersion]::Exchange2013_SP1,
 
-        # Credentials that will be used to connect to mailbox.
         [Management.Automation.PSCredential]
         [Management.Automation.Credential()]
         $Credential = [Management.Automation.PSCredential]::Empty

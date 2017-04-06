@@ -5,14 +5,12 @@ function Get-EWSItem {
     )]
     param (
 
-        # Filter that will be used to retrieve items.
         [Parameter(
                 Position = 0,
                 Mandatory
         )]
         [string]$Filter,
 
-        # Id of folder that items will be retrieved from.
         [Parameter(
                 ParameterSetName = 'byId',
                 ValueFromPipelineByPropertyName,
@@ -20,14 +18,12 @@ function Get-EWSItem {
         )]
         [Microsoft.Exchange.WebServices.Data.FolderId]$Id,
 
-        # 
         [Parameter(
                 ParameterSetName = 'byName',
                 Mandatory
         )]
         [Microsoft.Exchange.WebServices.Data.WellKnownFolderName]$Name,
     
-        # Service object that will be used to retrieve items.
         [Parameter(
                 ValueFromPipelineByPropertyName
         )]

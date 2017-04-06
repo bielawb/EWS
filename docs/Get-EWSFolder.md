@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-EWSFolder
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets folder inside selected mailbox.
 
 ## SYNTAX
 
@@ -16,21 +16,46 @@ Get-EWSFolder [-Path] <String> [[-Service] <ExchangeService>] [[-Mailbox] <Mailb
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Function that is used to get folder in given path inside selected mailbox.
+The path needs to start with one of the well known folders (such as Inbox, or Calendar).
+Behavior is different depending on the completeness of the path:
+- complete path specified - target folder returned
+- partial path specified - parent and all matching child folders will be returned.
+
+If service/mailbox are not specified, default values are used:
+- for service - last service that user connected to in the current session
+- for mailbox - matching mailbox from the last connected service.
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-EWSFolder -Path Inbox
 ```
 
-{{ Add example description here }}
+Object representing Inbox in the last connected service is returned.
+
+### -------------------------- EXAMPLE 2 --------------------------
+```
+PS C:\> Get-EWSFolder -Path Inbox\A
+```
+
+Result depends on the presence of folder A.
+If folder 'A' doesn't exist, object representing Inbox in the last connected service is returned.
+If there is any folder underneath the Inbox with name that matches A, it's returned too.
+Finally if A exists, only that folder is returned.
+
+### -------------------------- EXAMPLE 3 --------------------------
+```
+PS C:\> Get-EWSFolder -Path Calendar -Service $myService
+```
+
+Object representing Calendar in the $myService service is returned.
 
 ## PARAMETERS
 
 ### -Mailbox
-{{Fill Mailbox Description}}
+Mailbox where folder is located.
 
 ```yaml
 Type: Mailbox
@@ -45,7 +70,9 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-{{Fill Path Description}}
+Path to folder inside the mailbox with two formats supported:
+WellKnownFolder\Full\Match - returns selected folder
+WellKnownFolder\Partial\MatchTo - returns parent folder and any folder matching to MatchTo.
 
 ```yaml
 Type: String
@@ -60,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-{{Fill Service Description}}
+Service used to communicate with selected mailbox.
 
 ```yaml
 Type: ExchangeService

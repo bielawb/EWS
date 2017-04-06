@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-EWSFolder
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes folder in a specified delete mode.
 
 ## SYNTAX
 
@@ -17,21 +17,34 @@ Remove-EWSFolder [[-DeleteMode] <DeleteMode>] [[-Service] <ExchangeService>] [-F
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Function used to remove folder in one of three ways:
+- HardDelete 
+- SoftDelete
+- MoveToDeletedItems.
+All items in the folder are deleted too.
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-EWSFolder -Path Inbox\ToDelete | Remove-EWSFolder
 ```
 
-{{ Add example description here }}
+Prompts user to confirm deletion of Inbox\ToDelete folder.
+Once confirmed delete folder using MoveToDeletedItems (default) DeleteMode.
+
+### -------------------------- EXAMPLE 1 --------------------------
+```
+PS C:\> $folder = Get-EWSFolder -Path Inbox\ToDelete
+PS C:\> Remove-EWSFolder -Folder $folder -DeleteMode HardDelete -Confirm:$false
+```
+
+Deletes Inbox\ToDelete folder using HardDelete mode.
 
 ## PARAMETERS
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Prompts you for confirmation before running the function.
 
 ```yaml
 Type: SwitchParameter
@@ -46,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeleteMode
-{{Fill DeleteMode Description}}
+Mode used to delete folder. If not specified, MoveToDeletedItems mode is used.
 
 ```yaml
 Type: DeleteMode
@@ -62,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -Folder
-{{Fill Folder Description}}
+Folder object that should be removed (retrieved using Get-EWSFolder).
 
 ```yaml
 Type: Folder
@@ -77,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-{{Fill Service Description}}
+Service object that will be used to remove folder.
 
 ```yaml
 Type: ExchangeService
@@ -92,8 +105,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the function runs.
+The function is not run.
 
 ```yaml
 Type: SwitchParameter
