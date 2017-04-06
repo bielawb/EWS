@@ -2,19 +2,16 @@ function Connect-EWSService {
     [OutputType('Microsoft.Exchange.WebServices.Data.ExchangeService')]
     [CmdletBinding()]
     param (
-		
-        # Mailbox that command will connect to.
         [Parameter(
                 Mandatory
         )]
         [String]$Mailbox,
-        
 
-        # Version of exchange server that we will connect to.
+        [String]$ServiceUrl,
+
         [Microsoft.Exchange.WebServices.Data.ExchangeVersion]
         $Version = [Microsoft.Exchange.WebServices.Data.ExchangeVersion]::Exchange2013_SP1,
 
-        # Credentials that will be used to connect to mailbox.
         [Management.Automation.PSCredential]
         [Management.Automation.Credential()]
         $Credential = [Management.Automation.PSCredential]::Empty
@@ -28,7 +25,17 @@ function Connect-EWSService {
     } else {
         $exchangeService.UseDefaultCredentials = $true
     }
-    $exchangeService.AutodiscoverUrl($Mailbox)
+
+    if ($ServiceUrl) {
+        $exchangeService.Url = $ServiceUrl
+    } else {
+        try {
+            $exchangeService.AutodiscoverUrl($Mailbox)
+        } catch {
+            throw "Failed to identify Url for $Mailbox - $_"
+        }
+    }
+
     $Script:exchangeService = $exchangeService
     $Script:connections.Add(
         $exchangeService,
