@@ -23,8 +23,14 @@ function New-EWSAppointment {
 
         [string]$Location,
 
+        [Parameter(
+                Mandatory
+        )]
         [DateTime]$Start,
 
+        [Parameter(
+                Mandatory
+        )]
         [TimeSpan]$Duration,
 
         [string[]]$Attachment,
