@@ -8,13 +8,20 @@ param (
 
 foreach ($file in Get-ChildItem -Path $PSScriptRoot\*.ps1) {
     if ($DotSourceMethod -eq 'useScriptBlock') {
-        . (
-            [scriptblock]::Create(
-                [System.IO.File]::ReadAllText(
-                    $file.FullName,
-                    [System.Text.Encoding]::UTF8
+        # Avoiding bug in WMF5/Install-Module
+        # See: https://constantinekokkinos.com/articles/64/troubleshooting-powershell-and-net-when-error-messages-are-not-enough
+        $ExecutionContext.InvokeCommand.InvokeScript(
+            $false, 
+            (
+                [scriptblock]::Create(
+                    [io.file]::ReadAllText(
+                        $file.FullName,
+                        [Text.Encoding]::UTF8
+                    )
                 )
-            )
+            ), 
+            $null, 
+            $null
         )
     } else {
         . $file.FullName

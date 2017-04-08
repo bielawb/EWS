@@ -5,11 +5,13 @@ function Save-EWSAttachment {
     )]
     param (
         [string]$Path = '.',
+
         [Parameter(
                 ValueFromPipelineByPropertyName,
                 ValueFromPipeline
         )]
         [Microsoft.Exchange.WebServices.Data.FileAttachment[]]$Attachment,
+        
         [Parameter(
                 ValueFromPipelineByPropertyName
         )]

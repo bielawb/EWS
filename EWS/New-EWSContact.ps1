@@ -2,9 +2,13 @@ function New-EWSContact {
     [OutputType('Microsoft.Exchange.WebServices.Data.Contact')]
     param (
         [string]$GivenName,
+
         [string]$Surname,
+
         [string]$MiddleName,
+
         [string]$Company,
+
         [ValidateScript({
                     try {
                         foreach ($key in $_.Keys) {
@@ -16,6 +20,7 @@ function New-EWSContact {
                     }
         })]
         [hashtable]$Phone,
+
         [ValidateScript({
                     foreach ($hash in $_) {
                         foreach ($key in $hash.Keys) {
@@ -27,6 +32,7 @@ function New-EWSContact {
                     $true
         })]
         [hashtable[]]$Email,
+
         [ValidateScript({
                     try {
                         foreach ($key in $_.Keys) {
@@ -46,6 +52,7 @@ function New-EWSContact {
                     $true
         })]
         [hashtable]$PhysicalAddress,
+        
         [Parameter(
                 ValueFromPipelineByPropertyName
         )]

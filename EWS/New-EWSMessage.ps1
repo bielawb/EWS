@@ -8,29 +8,38 @@ function New-EWSMessage {
                 Mandatory
         )]
         [string[]]$To,
+
         [string[]]$Cc,
+
         [string[]]$Bcc,
+
         [Parameter(
                 Mandatory
         )]
         [string]$Subject,
+
         [Parameter(
                 Mandatory,
                 ParameterSetName = 'inline'
         )]
         [string]$Body,
+
         [Microsoft.Exchange.WebServices.Data.BodyType]$BodyType = 'Text',
+
         [string[]]$Attachment,
+
         [Parameter(
                 ValueFromPipeline,
                 Mandatory,
                 ParameterSetName = 'pipe'
         )]
         $InputObject,
+
         [Parameter(
                 ParameterSetName = 'pipe'
         )]
         [switch]$IsHtml,
+        
         [Parameter(
                 ValueFromPipelineByPropertyName
         )]

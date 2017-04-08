@@ -1,7 +1,7 @@
 function Move-EWSFolder {
     [CmdletBinding(
             ConfirmImpact = 'Medium',
-            SupportsShouldProcess = $true
+            SupportsShouldProcess
     )]
     param (
         [Parameter(

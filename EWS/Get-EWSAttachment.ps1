@@ -6,6 +6,7 @@ function Get-EWSAttachment {
                 ValueFromPipeline
         )]
         [Microsoft.Exchange.WebServices.Data.Item[]]$Item,
+        
         [Parameter(
                 ValueFromPipelineByPropertyName
         )]

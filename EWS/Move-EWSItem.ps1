@@ -1,7 +1,7 @@
 function Move-EWSItem {
     [CmdletBinding(
             ConfirmImpact = 'Medium',
-            SupportsShouldProcess = $true
+            SupportsShouldProcess
     )]
     param (
         [Parameter(
@@ -17,11 +17,13 @@ function Move-EWSItem {
                     }
         })]
         [string]$DestinationPath,
+
         [Parameter(
                 ValueFromPipeline,
                 Mandatory
         )]
         [Microsoft.Exchange.WebServices.Data.Item]$Item,
+        
         [Parameter(
                 ValueFromPipelineByPropertyName
         )]

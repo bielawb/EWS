@@ -5,33 +5,43 @@ function New-EWSAppointment {
     )]
     param (
         [string[]]$Required,
+
         [string[]]$Optional,
+
         [Parameter(
-                Mandatory = $true
+                Mandatory
         )]
         [string]$Subject,
+
         [Parameter(
-                Mandatory = $true,
+                Mandatory,
                 ParameterSetName = 'inline'
         )]
         [string]$Body,
+
         [Microsoft.Exchange.WebServices.Data.BodyType]$BodyType = 'Text',
+
         [string]$Location,
+
         [DateTime]$Start,
+
         [TimeSpan]$Duration,
+
         [string[]]$Attachment,
         [Parameter(
-                ValueFromPipeline = $true,
-                Mandatory = $true,
+                ValueFromPipeline,
+                Mandatory,
                 ParameterSetName = 'pipe'
         )]
         $InputObject,
+
         [Parameter(
                 ParameterSetName = 'pipe'
         )]
         [switch]$IsHtml,
+        
         [Parameter(
-                ValueFromPipelineByPropertyName = $true
+                ValueFromPipelineByPropertyName
         )]
         [Microsoft.Exchange.WebServices.Data.ExchangeService]$Service = $script:exchangeService
     )
