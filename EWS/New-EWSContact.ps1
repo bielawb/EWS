@@ -71,14 +71,14 @@ function New-EWSContact {
     $index = 1
     foreach ($hash in $Email) {
         if ($index -le 3) {
-            if ($email = $hash.email) {
+            if ($emailAddress = $hash.email) {
                 if (! ($displayName = $hash.DisplayName)) {
                     $displayName = $hash.email
                 }
                 $contact.EmailAddresses["EmailAddress$index"] =
                     New-Object Microsoft.Exchange.WebServices.Data.EmailAddress -ArgumentList @(
                         $displayName
-                        $email
+                        $emailAddress
                     )
                 $index++
             }
