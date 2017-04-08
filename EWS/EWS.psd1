@@ -132,7 +132,7 @@ PrivateData = @{
         ProjectUri = 'https://github.com/bielawb/EWS'
 
         # A URL to an icon representing this module.
-        IconUri = 'https://powershellpl.files.wordpress.com/2017/04/ewsmodulelogo.png'
+        IconUri = 'https://raw.githubusercontent.com/bielawb/EWS/master/EWSModuleLogo.png'
 
         # ReleaseNotes of this module
         # ReleaseNotes = ''
