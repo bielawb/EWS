@@ -2,9 +2,13 @@ function New-EWSContact {
     [OutputType('Microsoft.Exchange.WebServices.Data.Contact')]
     param (
         [string]$GivenName,
+
         [string]$Surname,
+
         [string]$MiddleName,
+
         [string]$Company,
+
         [ValidateScript({
                     try {
                         foreach ($key in $_.Keys) {
@@ -16,6 +20,7 @@ function New-EWSContact {
                     }
         })]
         [hashtable]$Phone,
+
         [ValidateScript({
                     foreach ($hash in $_) {
                         foreach ($key in $hash.Keys) {
@@ -27,6 +32,7 @@ function New-EWSContact {
                     $true
         })]
         [hashtable[]]$Email,
+
         [ValidateScript({
                     try {
                         foreach ($key in $_.Keys) {
@@ -46,6 +52,7 @@ function New-EWSContact {
                     $true
         })]
         [hashtable]$PhysicalAddress,
+        
         [Parameter(
                 ValueFromPipelineByPropertyName
         )]
@@ -71,14 +78,14 @@ function New-EWSContact {
     $index = 1
     foreach ($hash in $Email) {
         if ($index -le 3) {
-            if ($email = $hash.email) {
+            if ($emailAddress = $hash.email) {
                 if (! ($displayName = $hash.DisplayName)) {
                     $displayName = $hash.email
                 }
                 $contact.EmailAddresses["EmailAddress$index"] =
                     New-Object Microsoft.Exchange.WebServices.Data.EmailAddress -ArgumentList @(
                         $displayName
-                        $email
+                        $emailAddress
                     )
                 $index++
             }

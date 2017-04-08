@@ -5,10 +5,12 @@ function Remove-EWSItem {
     )]
     param (
         [Microsoft.Exchange.WebServices.Data.DeleteMode]$DeleteMode = 'MoveToDeletedItems',
+
         [Parameter(
                 ValueFromPipelineByPropertyName
         )]
         [Microsoft.Exchange.WebServices.Data.ExchangeService]$Service = $Script:exchangeService,
+        
         [Parameter(
                 ValueFromPipeline,
                 Mandatory

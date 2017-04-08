@@ -15,7 +15,9 @@ function Get-EWSFolder  {
                     }
         })]
         [string]$Path,
+
         [Microsoft.Exchange.WebServices.Data.ExchangeService]$Service = $Script:exchangeService,
+        
         [Microsoft.Exchange.WebServices.Data.Mailbox]$Mailbox
     )
     

@@ -9,6 +9,7 @@ function New-EWSFolder {
                 ValueFromPipelineByPropertyName
         )]
         [string]$DisplayName,
+
         [Parameter(
                 ValueFromPipelineByPropertyName
         )]
@@ -19,6 +20,7 @@ function New-EWSFolder {
                 'Mail'
         )]
         [string]$FolderType = 'Mail',
+
         [Parameter(
                 ParameterSetName = 'byId',
                 ValueFromPipelineByPropertyName,
@@ -26,15 +28,18 @@ function New-EWSFolder {
         )]
         [Alias('Id')]
         [Microsoft.Exchange.WebServices.Data.FolderId]$ParentId,
+
         [Parameter(
                 ParameterSetName = 'byName',
                 Mandatory
         )]
         [Microsoft.Exchange.WebServices.Data.WellKnownFolderName]$ParentName,
+
         [Parameter(
                 ValueFromPipelineByPropertyName
         )]
         [Microsoft.Exchange.WebServices.Data.ExchangeService]$Service = $Script:exchangeService,
+        
         [Microsoft.Exchange.WebServices.Data.Mailbox]$Mailbox
 
     )

@@ -1,37 +1,18 @@
-## Welcome to GitHub Pages
+## PowerShell Module: EWS
+![Image](https://raw.githubusercontent.com/bielawb/EWS/master/EWSModuleLogo.png)
 
-You can use the [editor on GitHub](https://github.com/bielawb/EWS/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+EWS (Exchange Web Services) is a convenient way to manage mailboxes:
+- on premise (with Exchange 2007+)
+- in the cloud (Office 365)
+- at home (outlook.com/live.com mailboxes)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The purpose of this module is to provide a thin wrapper around EWS objects and methods.
+That way user can use familiar syntax when communicating with her/his Exchange resources.
 
-### Markdown
+This module is far from being feature-complete, but it should be a good starting point.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/bielawb/EWS/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## TODO
+Apart from extending functionality, there are few serious problems that need to be addressed first:
+1. Testing (see #3)
+2. Help - basic version created for existing commands (see #2)
+3. Automatic building/ releasing/ publishing (see #4)
