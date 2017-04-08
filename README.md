@@ -16,4 +16,3 @@ Apart from extending functionality, there are few serious problems that need to 
 1. Testing (see #3)
 2. Help - basic version created for existing commands (see #2)
 3. Automatic building/ releasing/ publishing (see #4)
-
