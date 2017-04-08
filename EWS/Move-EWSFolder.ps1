@@ -17,11 +17,13 @@ function Move-EWSFolder {
                     }
         })]
         [string]$DestinationPath,
+
         [Parameter(
                 ValueFromPipeline,
                 Mandatory
         )]
         [Microsoft.Exchange.WebServices.Data.Folder]$Folder,
+        
         [Parameter(
                 ValueFromPipelineByPropertyName
         )]
