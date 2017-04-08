@@ -31,7 +31,7 @@ PS C:\> Get-EWSFolder -Path Inbox\ToDelete | Get-EWSItem -Filter IsRead:true | R
 Prompts user to confirm deletion of read (IsRead:true) items in Inbox\ToDelete folder.
 Once confirmed delete items using MoveToDeletedItems (default) DeleteMode.
 
-### -------------------------- EXAMPLE 1 --------------------------
+### -------------------------- EXAMPLE 2 --------------------------
 ```
 PS C:\> $item = Get-EWSFolder -Path Inbox\ToDelete | Get-EWSItem -Filter IsRead:true -Limit 1
 PS C:\> Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false

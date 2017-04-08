@@ -1,13 +1,13 @@
 function Connect-EWSService {
     [OutputType('Microsoft.Exchange.WebServices.Data.ExchangeService')]
     [CmdletBinding()]
-    param (
-		
+    param (		
         [Parameter(
                 Mandatory
         )]
         [String]$Mailbox,
-        
+
+        [String]$ServiceUrl,
 
         [Microsoft.Exchange.WebServices.Data.ExchangeVersion]
         $Version = [Microsoft.Exchange.WebServices.Data.ExchangeVersion]::Exchange2013_SP1,
@@ -25,7 +25,17 @@ function Connect-EWSService {
     } else {
         $exchangeService.UseDefaultCredentials = $true
     }
-    $exchangeService.AutodiscoverUrl($Mailbox)
+
+    if ($ServiceUrl) {
+        $exchangeService.Url = $ServiceUrl
+    } else {
+        try {
+            $exchangeService.AutodiscoverUrl($Mailbox)
+        } catch {
+            throw "Failed to identify Url for $Mailbox - $_"
+        }
+    }
+
     $Script:exchangeService = $exchangeService
     $Script:connections.Add(
         $exchangeService,

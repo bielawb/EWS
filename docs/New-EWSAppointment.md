@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-EWSAppointment
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates new appointment.
 
 ## SYNTAX
 
@@ -26,21 +26,36 @@ New-EWSAppointment [-Required <String[]>] [-Optional <String[]>] -Subject <Strin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Function that can be used to create appointments.
+I requires following fields:
+- Subject
+- Body
+- Start
+- Duration
+
+Optional parameters that can be used:
+- Required (required attendees)
+- Optional (optional attendees)
+- BodyType (type of the body)
+- Location
+- Attachment
+
+You can pipe in the body of appointment.
+If the body is in HTML format, use -IsHtml flag.
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-EWSAppointment -Subject Dentist -Body 'Visit Dentist' -Start (Get-Date).AddDays(1) -Duration 0:30:0
 ```
 
-{{ Add example description here }}
+Creates appointment in the calendar about Dentist visit planned for tomorrow that will take half of an hour.
 
 ## PARAMETERS
 
 ### -Attachment
-{{Fill Attachment Description}}
+Paths to attachments that should be added to the new appointment.
 
 ```yaml
 Type: String[]
@@ -55,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -Body
-{{Fill Body Description}}
+Body of the appointment.
 
 ```yaml
 Type: String
@@ -70,7 +85,8 @@ Accept wildcard characters: False
 ```
 
 ### -BodyType
-{{Fill BodyType Description}}
+Type of body of the appointment.
+Text is used if not specified.
 
 ```yaml
 Type: BodyType
@@ -86,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -Duration
-{{Fill Duration Description}}
+Duration of the appointment.
 
 ```yaml
 Type: TimeSpan
@@ -101,7 +117,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+Content piped into the function.
+It's used to form appointment's body.
 
 ```yaml
 Type: Object
@@ -116,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -IsHtml
-{{Fill IsHtml Description}}
+Flag to specify that piped-in content is already formatted as HTML.
 
 ```yaml
 Type: SwitchParameter
@@ -131,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-{{Fill Location Description}}
+Location of the appointment.
 
 ```yaml
 Type: String
@@ -146,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -Optional
-{{Fill Optional Description}}
+List of optional attendees.
 
 ```yaml
 Type: String[]
@@ -161,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -Required
-{{Fill Required Description}}
+List of required attendees.
 
 ```yaml
 Type: String[]
@@ -176,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-{{Fill Service Description}}
+Service used to create new appointment.
 
 ```yaml
 Type: ExchangeService
@@ -191,7 +208,7 @@ Accept wildcard characters: False
 ```
 
 ### -Start
-{{Fill Start Description}}
+Date/time of the appointment start.
 
 ```yaml
 Type: DateTime
@@ -206,7 +223,7 @@ Accept wildcard characters: False
 ```
 
 ### -Subject
-{{Fill Subject Description}}
+Subject of the appointment.
 
 ```yaml
 Type: String

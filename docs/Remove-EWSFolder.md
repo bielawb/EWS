@@ -33,7 +33,7 @@ PS C:\> Get-EWSFolder -Path Inbox\ToDelete | Remove-EWSFolder
 Prompts user to confirm deletion of Inbox\ToDelete folder.
 Once confirmed delete folder using MoveToDeletedItems (default) DeleteMode.
 
-### -------------------------- EXAMPLE 1 --------------------------
+### -------------------------- EXAMPLE 2 --------------------------
 ```
 PS C:\> $folder = Get-EWSFolder -Path Inbox\ToDelete
 PS C:\> Remove-EWSFolder -Folder $folder -DeleteMode HardDelete -Confirm:$false

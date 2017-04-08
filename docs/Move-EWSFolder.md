@@ -30,7 +30,7 @@ PS C:\> Get-EWSFolder -Path Inbox\Test | Move-EWSFolder -DestinationPath Inbox\P
 
 Folder 'Test' located inside Inbox is moved as a sub-folder to Inbox\Parent.
 
-### -------------------------- EXAMPLE 1 --------------------------
+### -------------------------- EXAMPLE 2 --------------------------
 ```
 PS C:\> $folder = Get-EWSFolder -Path Inbox\Parent\Test 
 PS C:\> Move-EWSFolder -DestinationPath Inbox -Folder $folder

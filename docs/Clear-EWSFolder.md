@@ -7,7 +7,7 @@ schema: 2.0.0
 # Clear-EWSFolder
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Clears content of a folder.
 
 ## SYNTAX
 
@@ -17,21 +17,39 @@ Clear-EWSFolder [[-DeleteMode] <DeleteMode>] [[-Service] <ExchangeService>] [-Fo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Function used to clear content of select folder.
+By default it will only wipe items in the folder specified.
+When used with the flag 'Include Sub-folders' it will wipe both items and folders in selected folder.
+
+User can specify mode that will be used to delete items/folders:
+- MoveToDeletedItems (default)
+- SoftDelete
+- HardDelete.
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-EWSFolder Inbox\ToDelete | Clear-EWSFolder
 ```
 
-{{ Add example description here }}
+Clears content of Inbox\ToDelete folder, leaving sub-folders intact.
+Will prompt the user before performing the operation.
+Uses MoveToDeletedItems mode to remove items (default).
+
+### -------------------------- EXAMPLE 2 --------------------------
+```
+PS C:\> Get-EWSFolder Inbox\ToDelete | Clear-EWSFolder -IncludeSubfolders -Confirm:$false -DeleteMode HardDelete
+```
+
+Clears content of Inbox\ToDelete folder, including sub-folders and items found in them.
+Will not prompt the user before performing the operation.
+Uses HardDelete mode to remove items/folders.
 
 ## PARAMETERS
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Prompts you for confirmation before running the function.
 
 ```yaml
 Type: SwitchParameter
@@ -46,7 +64,8 @@ Accept wildcard characters: False
 ```
 
 ### -DeleteMode
-{{Fill DeleteMode Description}}
+Mode that should be used when removing items/folders.
+Will use MoveToDeletedItems mode when nothing is specified.
 
 ```yaml
 Type: DeleteMode
@@ -62,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -Folder
-{{Fill Folder Description}}
+Folder object that should be moved (retrieved using Get-EWSFolder).
 
 ```yaml
 Type: Folder
@@ -77,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -IncludeSubfolders
-{{Fill IncludeSubfolders Description}}
+Flag to specify if sub-folders and items in them should be removed too.
 
 ```yaml
 Type: SwitchParameter
@@ -92,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-{{Fill Service Description}}
+Service object that will be used to move folder.
 
 ```yaml
 Type: ExchangeService
@@ -107,8 +126,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the function runs.
+The function is not run.
 
 ```yaml
 Type: SwitchParameter

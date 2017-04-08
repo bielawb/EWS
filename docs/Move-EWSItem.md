@@ -28,7 +28,7 @@ PS C:\> Get-EWSItem -Name Inbox -Filter subject:test -Limit 1 | Move-EWSItem -De
 
 First item found in Inbox with subject that contains word 'test' is moved to Inbox\Moved.
 
-### -------------------------- EXAMPLE 1 --------------------------
+### -------------------------- EXAMPLE 2 --------------------------
 ```
 PS C:\> $item = Get-EWSFolder -Path Inbox\Moved | Get-EWSItem -Filter subject:test -Limit 1
 PS C:\> Move-EWSItem -DestinationPath Inbox -Folder $item

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Save-EWSAttachment
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Saves attachment (or attachments) to disk.
 
 ## SYNTAX
 
@@ -17,21 +17,23 @@ Save-EWSAttachment [[-Path] <String>] [[-Attachment] <FileAttachment[]>] [[-Serv
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Function used to save attachments found in items to disk.
+Need to be used in combination with Get-EWSAttachment.
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $item = Get-EWSItem -Name Inbox -Filter 'from:Sebastian and hasAttachment:true' -Limit 1
+PS C:\> Get-EWSAttachment -Item $item | Save-EWSAttachment -Path c:\temp\
 ```
 
-{{ Add example description here }}
+Saves attachment from e-mail to c:\temp\ folder.
 
 ## PARAMETERS
 
 ### -Attachment
-{{Fill Attachment Description}}
+Attachment object that should be saved to disk (retrieved using Get-EWSAttachment).
 
 ```yaml
 Type: FileAttachment[]
@@ -46,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Prompts you for confirmation before running the function.
 
 ```yaml
 Type: SwitchParameter
@@ -61,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-{{Fill Path Description}}
+Folder where attachments should be saved.
 
 ```yaml
 Type: String
@@ -76,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-{{Fill Service Description}}
+Service object that will be used to get/save attachment.
 
 ```yaml
 Type: ExchangeService
@@ -91,8 +93,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the function runs.
+The function is not run.
 
 ```yaml
 Type: SwitchParameter

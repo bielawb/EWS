@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-EWSAttachment
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets attachments from selected item.
 
 ## SYNTAX
 
@@ -16,21 +16,24 @@ Get-EWSAttachment [[-Item] <Item[]>] [[-Service] <ExchangeService>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Function that allows user to get attachment from item or items.
+Can be used in combination with Save-EWSAttachment.
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $item = Get-EWSItem -Name Inbox -Filter 'from:Sebastian and hasAttachment:true' -Limit 1
+PS C:\> Get-EWSAttachment -Item $item
 ```
 
-{{ Add example description here }}
+Gets first e-mail sent from 'Sebastian' that has attachments.
+List any attachment find in this e-mail.
 
 ## PARAMETERS
 
 ### -Item
-{{Fill Item Description}}
+Item object that contains attachment (retrieved using Get-EWSItem).
 
 ```yaml
 Type: Item[]
@@ -45,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-{{Fill Service Description}}
+Service object that will be used to get item/attachment.
 
 ```yaml
 Type: ExchangeService

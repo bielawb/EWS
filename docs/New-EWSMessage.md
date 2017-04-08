@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-EWSMessage
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates e-mail message.
 
 ## SYNTAX
 
@@ -24,21 +24,44 @@ New-EWSMessage -To <String[]> [-Cc <String[]>] [-Bcc <String[]>] -Subject <Strin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Function that can be used to create e-mails.
+Required parameters:
+- To
+- Subject
+- Body
+
+Latter can be piped in the function.
+
+Optional parameters:
+- Cc/Bcc
+- BodyType
+- Attachment
+
+E-mail is sent and saved to 'Sent Items' folder.
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-EWSMessage -To MrBeans@gmail.com -Subject Test -Body 'Mic test: 1... 2... 3...'
 ```
 
-{{ Add example description here }}
+Sends e-mail to MrBeans@gmail.com using last connected service with subject Test and specified body.
+
+### -------------------------- EXAMPLE 2 --------------------------
+```
+PS C:\> $html = Get-ChildItem | Select-Object -Property Name, Length, LastWriteTime | ConvertTo-Html 
+PS C:\> $html | New-EWSMessage -To MrBeans@gmail.com -Subject Test -Body 'Mic test: 1... 2... 3...' -IsHtml -BodyType HTML
+```
+
+Generates HTML document from the output of Get-ChildITem
+Sends e-mail to MrBeans@gmail.com using last connected service with subject Test and $html as HTML body.
+
 
 ## PARAMETERS
 
 ### -Attachment
-{{Fill Attachment Description}}
+Paths to attachments that should be added to the message.
 
 ```yaml
 Type: String[]
@@ -53,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Bcc
-{{Fill Bcc Description}}
+Background carbon copy - hidden recipients of the e-mail.
 
 ```yaml
 Type: String[]
@@ -68,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -Body
-{{Fill Body Description}}
+Body of the e-mail.
 
 ```yaml
 Type: String
@@ -83,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -BodyType
-{{Fill BodyType Description}}
+Type of the e-mail body. The default is Text.
 
 ```yaml
 Type: BodyType
@@ -99,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -Cc
-{{Fill Cc Description}}
+Carbon copy - indirect recipients of the e-mail.
 
 ```yaml
 Type: String[]
@@ -114,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+Input text that will be used as a message body.
 
 ```yaml
 Type: Object
@@ -129,7 +152,7 @@ Accept wildcard characters: False
 ```
 
 ### -IsHtml
-{{Fill IsHtml Description}}
+Flag to specify that command input is already converted to HTML.
 
 ```yaml
 Type: SwitchParameter
@@ -144,7 +167,7 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-{{Fill Service Description}}
+Service used to create/send message.
 
 ```yaml
 Type: ExchangeService
@@ -159,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### -Subject
-{{Fill Subject Description}}
+Subject of the created message.
 
 ```yaml
 Type: String
@@ -174,7 +197,7 @@ Accept wildcard characters: False
 ```
 
 ### -To
-{{Fill To Description}}
+Main recipients of the message.
 
 ```yaml
 Type: String[]

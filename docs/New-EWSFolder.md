@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-EWSFolder
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates sub-folder in the specified parent folder.
 
 ## SYNTAX
 
@@ -24,21 +24,30 @@ New-EWSFolder -DisplayName <String> [-FolderType <String>] -ParentId <FolderId> 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Function used to create folders in the folder structure of a mailbox.
+Parent folder can be specified by name (for well known folder names) or Id.
+
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-EWSFolder -ParentName Inbox -DisplayName FooBar
 ```
 
-{{ Add example description here }}
+Create sub-folder FooBar in the folder Inbox.
+
+### -------------------------- EXAMPLE 2 --------------------------
+```
+PS C:\> Get-EWSFolder -Path Contacts\Parent | New-EWSFolder -DisplayName Child -FolderType Contacts
+```
+
+Create sub-folder Child designed to store Contacts inside Contacts\Parent.
 
 ## PARAMETERS
 
 ### -DisplayName
-{{Fill DisplayName Description}}
+Display name of the created folder.
 
 ```yaml
 Type: String
@@ -53,7 +62,11 @@ Accept wildcard characters: False
 ```
 
 ### -FolderType
-{{Fill FolderType Description}}
+Type of the folder to create. Supported types:
+- Mail (default)
+- Calendar
+- Contacts
+- Tasks
 
 ```yaml
 Type: String
@@ -69,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -Mailbox
-{{Fill Mailbox Description}}
+Mailbox where folder will be created.
 
 ```yaml
 Type: Mailbox
@@ -84,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentId
-{{Fill ParentId Description}}
+Id of the Parent folder (useful for nested folders).
 
 ```yaml
 Type: FolderId
@@ -99,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentName
-{{Fill ParentName Description}}
+Well known name of the parent folder (e.g. Inbox, Calendar).
 
 ```yaml
 Type: WellKnownFolderName
@@ -115,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-{{Fill Service Description}}
+Service object that will be used to create a folder.
 
 ```yaml
 Type: ExchangeService

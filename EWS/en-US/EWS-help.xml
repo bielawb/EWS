@@ -5,16 +5,22 @@
 <command:details><command:name>Clear-EWSFolder</command:name>
 <command:verb>Clear</command:verb>
 <command:noun>EWSFolder</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Clears content of a folder.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>Function used to clear content of select folder. By default it will only wipe items in the folder specified. When used with the flag 'Include Sub-folders' it will wipe both items and folders in selected folder.
+</maml:para>
+<maml:para>User can specify mode that will be used to delete items/folders: - MoveToDeletedItems (default)
+</maml:para>
+<maml:para>- SoftDelete
+</maml:para>
+<maml:para>- HardDelete.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Clear-EWSFolder</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>DeleteMode</maml:name>
-<maml:Description><maml:para>{{Fill DeleteMode Description}}
+<maml:Description><maml:para>Mode that should be used when removing items/folders. Will use MoveToDeletedItems mode when nothing is specified.
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">HardDelete</command:parameterValue>
@@ -27,7 +33,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service object that will be used to move folder.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -36,7 +42,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="2" aliases="none"><maml:name>Folder</maml:name>
-<maml:Description><maml:para>{{Fill Folder Description}}
+<maml:Description><maml:para>Folder object that should be moved (retrieved using Get-EWSFolder).
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Folder</command:parameterValue>
@@ -45,7 +51,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the function.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -53,7 +59,7 @@
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IncludeSubfolders</maml:name>
-<maml:Description><maml:para>{{Fill IncludeSubfolders Description}}
+<maml:Description><maml:para>Flag to specify if sub-folders and items in them should be removed too.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -61,7 +67,7 @@
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+<maml:Description><maml:para>Shows what would happen if the function runs. The function is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -71,7 +77,7 @@
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the function.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -80,7 +86,7 @@
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>DeleteMode</maml:name>
-<maml:Description><maml:para>{{Fill DeleteMode Description}}
+<maml:Description><maml:para>Mode that should be used when removing items/folders. Will use MoveToDeletedItems mode when nothing is specified.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">DeleteMode</command:parameterValue>
@@ -89,7 +95,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="2" aliases="none"><maml:name>Folder</maml:name>
-<maml:Description><maml:para>{{Fill Folder Description}}
+<maml:Description><maml:para>Folder object that should be moved (retrieved using Get-EWSFolder).
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Folder</command:parameterValue>
@@ -98,7 +104,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IncludeSubfolders</maml:name>
-<maml:Description><maml:para>{{Fill IncludeSubfolders Description}}
+<maml:Description><maml:para>Flag to specify if sub-folders and items in them should be removed too.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -107,7 +113,7 @@
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service object that will be used to move folder.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -116,7 +122,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+<maml:Description><maml:para>Shows what would happen if the function runs. The function is not run.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -144,8 +150,14 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; Get-EWSFolder Inbox\ToDelete | Clear-EWSFolder</dev:code>
+<dev:remarks><maml:para>Clears content of Inbox\ToDelete folder, leaving sub-folders intact. Will prompt the user before performing the operation. Uses MoveToDeletedItems mode to remove items (default).
+</maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+<dev:code>PS C:\&gt; Get-EWSFolder Inbox\ToDelete | Clear-EWSFolder -IncludeSubfolders -Confirm:$false -DeleteMode HardDelete</dev:code>
+<dev:remarks><maml:para>Clears content of Inbox\ToDelete folder, including sub-folders and items found in them. Will not prompt the user before performing the operation. Uses HardDelete mode to remove items/folders.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -283,16 +295,16 @@
 <command:details><command:name>Get-EWSAttachment</command:name>
 <command:verb>Get</command:verb>
 <command:noun>EWSAttachment</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Gets attachments from selected item.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>Function that allows user to get attachment from item or items. Can be used in combination with Save-EWSAttachment.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Get-EWSAttachment</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Item</maml:name>
-<maml:Description><maml:para>{{Fill Item Description}}
+<maml:Description><maml:para>Item object that contains attachment (retrieved using Get-EWSItem).
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Item[]</command:parameterValue>
@@ -301,7 +313,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service object that will be used to get item/attachment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -312,7 +324,7 @@
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Item</maml:name>
-<maml:Description><maml:para>{{Fill Item Description}}
+<maml:Description><maml:para>Item object that contains attachment (retrieved using Get-EWSItem).
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Item[]</command:parameterValue>
@@ -321,7 +333,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service object that will be used to get item/attachment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -349,8 +361,9 @@
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $item = Get-EWSItem -Name Inbox -Filter 'from:Sebastian and hasAttachment:true' -Limit 1
+PS C:\&gt; Get-EWSAttachment -Item $item</dev:code>
+<dev:remarks><maml:para>Gets first e-mail sent from 'Sebastian' that has attachments. List any attachment find in this e-mail.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -867,7 +880,7 @@
 </maml:para>
 </dev:remarks>
 </command:example>
-<command:example><maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+<command:example><maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
 <dev:code>PS C:\&gt; $folder = Get-EWSFolder -Path Inbox\Parent\Test 
 PS C:\&gt; Move-EWSFolder -DestinationPath Inbox -Folder $folder</dev:code>
 <dev:remarks><maml:para>Folder 'Test' located inside Inbox\Parent is moved as a sub-folder to Inbox.
@@ -1004,7 +1017,7 @@ PS C:\&gt; Move-EWSFolder -DestinationPath Inbox -Folder $folder</dev:code>
 </maml:para>
 </dev:remarks>
 </command:example>
-<command:example><maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+<command:example><maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
 <dev:code>PS C:\&gt; $item = Get-EWSFolder -Path Inbox\Moved | Get-EWSItem -Filter subject:test -Limit 1
 PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:remarks><maml:para>First item found in Inbox\Moved with subject that contains word 'test' is moved to Inbox.
@@ -1018,16 +1031,38 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <command:details><command:name>New-EWSAppointment</command:name>
 <command:verb>New</command:verb>
 <command:noun>EWSAppointment</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Creates new appointment.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>Function that can be used to create appointments. I requires following fields: - Subject
+</maml:para>
+<maml:para>- Body
+</maml:para>
+<maml:para>- Start
+</maml:para>
+<maml:para>- Duration
+</maml:para>
+<maml:para>
+</maml:para>
+<maml:para>Optional parameters that can be used: - Required (required attendees)
+</maml:para>
+<maml:para>- Optional (optional attendees)
+</maml:para>
+<maml:para>- BodyType (type of the body)
+</maml:para>
+<maml:para>- Location
+</maml:para>
+<maml:para>- Attachment
+</maml:para>
+<maml:para>
+</maml:para>
+<maml:para>You can pipe in the body of appointment. If the body is in HTML format, use -IsHtml flag.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>New-EWSAppointment</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Attachment</maml:name>
-<maml:Description><maml:para>{{Fill Attachment Description}}
+<maml:Description><maml:para>Paths to attachments that should be added to the new appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1036,7 +1071,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Body</maml:name>
-<maml:Description><maml:para>{{Fill Body Description}}
+<maml:Description><maml:para>Body of the appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1045,7 +1080,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>BodyType</maml:name>
-<maml:Description><maml:para>{{Fill BodyType Description}}
+<maml:Description><maml:para>Type of body of the appointment. Text is used if not specified.
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">HTML</command:parameterValue>
@@ -1057,7 +1092,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Duration</maml:name>
-<maml:Description><maml:para>{{Fill Duration Description}}
+<maml:Description><maml:para>Duration of the appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
@@ -1066,7 +1101,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Location</maml:name>
-<maml:Description><maml:para>{{Fill Location Description}}
+<maml:Description><maml:para>Location of the appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1075,7 +1110,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Optional</maml:name>
-<maml:Description><maml:para>{{Fill Optional Description}}
+<maml:Description><maml:para>List of optional attendees.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1084,7 +1119,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Required</maml:name>
-<maml:Description><maml:para>{{Fill Required Description}}
+<maml:Description><maml:para>List of required attendees.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1093,7 +1128,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service used to create new appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -1102,7 +1137,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Start</maml:name>
-<maml:Description><maml:para>{{Fill Start Description}}
+<maml:Description><maml:para>Date/time of the appointment start.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
@@ -1111,7 +1146,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Subject</maml:name>
-<maml:Description><maml:para>{{Fill Subject Description}}
+<maml:Description><maml:para>Subject of the appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1122,7 +1157,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 </command:syntaxItem>
 <command:syntaxItem><maml:name>New-EWSAppointment</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Attachment</maml:name>
-<maml:Description><maml:para>{{Fill Attachment Description}}
+<maml:Description><maml:para>Paths to attachments that should be added to the new appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1131,7 +1166,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>BodyType</maml:name>
-<maml:Description><maml:para>{{Fill BodyType Description}}
+<maml:Description><maml:para>Type of body of the appointment. Text is used if not specified.
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">HTML</command:parameterValue>
@@ -1143,7 +1178,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Duration</maml:name>
-<maml:Description><maml:para>{{Fill Duration Description}}
+<maml:Description><maml:para>Duration of the appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
@@ -1152,7 +1187,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>InputObject</maml:name>
-<maml:Description><maml:para>{{Fill InputObject Description}}
+<maml:Description><maml:para>Content piped into the function. It's used to form appointment's body.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
@@ -1161,7 +1196,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IsHtml</maml:name>
-<maml:Description><maml:para>{{Fill IsHtml Description}}
+<maml:Description><maml:para>Flag to specify that piped-in content is already formatted as HTML.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1169,7 +1204,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Location</maml:name>
-<maml:Description><maml:para>{{Fill Location Description}}
+<maml:Description><maml:para>Location of the appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1178,7 +1213,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Optional</maml:name>
-<maml:Description><maml:para>{{Fill Optional Description}}
+<maml:Description><maml:para>List of optional attendees.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1187,7 +1222,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Required</maml:name>
-<maml:Description><maml:para>{{Fill Required Description}}
+<maml:Description><maml:para>List of required attendees.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1196,7 +1231,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service used to create new appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -1205,7 +1240,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Start</maml:name>
-<maml:Description><maml:para>{{Fill Start Description}}
+<maml:Description><maml:para>Date/time of the appointment start.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
@@ -1214,7 +1249,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Subject</maml:name>
-<maml:Description><maml:para>{{Fill Subject Description}}
+<maml:Description><maml:para>Subject of the appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1225,7 +1260,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Attachment</maml:name>
-<maml:Description><maml:para>{{Fill Attachment Description}}
+<maml:Description><maml:para>Paths to attachments that should be added to the new appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1234,7 +1269,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Body</maml:name>
-<maml:Description><maml:para>{{Fill Body Description}}
+<maml:Description><maml:para>Body of the appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1243,7 +1278,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>BodyType</maml:name>
-<maml:Description><maml:para>{{Fill BodyType Description}}
+<maml:Description><maml:para>Type of body of the appointment. Text is used if not specified.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">BodyType</command:parameterValue>
@@ -1252,7 +1287,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Duration</maml:name>
-<maml:Description><maml:para>{{Fill Duration Description}}
+<maml:Description><maml:para>Duration of the appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
@@ -1261,7 +1296,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>InputObject</maml:name>
-<maml:Description><maml:para>{{Fill InputObject Description}}
+<maml:Description><maml:para>Content piped into the function. It's used to form appointment's body.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
@@ -1270,7 +1305,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IsHtml</maml:name>
-<maml:Description><maml:para>{{Fill IsHtml Description}}
+<maml:Description><maml:para>Flag to specify that piped-in content is already formatted as HTML.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1279,7 +1314,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Location</maml:name>
-<maml:Description><maml:para>{{Fill Location Description}}
+<maml:Description><maml:para>Location of the appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1288,7 +1323,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Optional</maml:name>
-<maml:Description><maml:para>{{Fill Optional Description}}
+<maml:Description><maml:para>List of optional attendees.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1297,7 +1332,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Required</maml:name>
-<maml:Description><maml:para>{{Fill Required Description}}
+<maml:Description><maml:para>List of required attendees.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1306,7 +1341,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service used to create new appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -1315,7 +1350,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Start</maml:name>
-<maml:Description><maml:para>{{Fill Start Description}}
+<maml:Description><maml:para>Date/time of the appointment start.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
@@ -1324,7 +1359,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Subject</maml:name>
-<maml:Description><maml:para>{{Fill Subject Description}}
+<maml:Description><maml:para>Subject of the appointment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1352,8 +1387,8 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; New-EWSAppointment -Subject Dentist -Body 'Visit Dentist' -Start (Get-Date).AddDays(1) -Duration 0:30:0</dev:code>
+<dev:remarks><maml:para>Creates appointment in the calendar about Dentist visit planned for tomorrow that will take half of an hour.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -1364,16 +1399,18 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <command:details><command:name>New-EWSContact</command:name>
 <command:verb>New</command:verb>
 <command:noun>EWSContact</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Creates new contacts using provided contact details.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>Function that helps creating new contacts. It accepts single hash table for phone and physical address with details of the contact. Keys of these hash tables need to match with the types defined for a given contact, e.g.: Phone: HomePhone, MobilePhone PhysicalAddress: Home, Business
+</maml:para>
+<maml:para>Emails, on the other hand, accepts array of hash tables, each with two keys: DisplayName and email.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>New-EWSContact</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>GivenName</maml:name>
-<maml:Description><maml:para>{{Fill GivenName Description}}
+<maml:Description><maml:para>First name of the contact.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1382,7 +1419,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Surname</maml:name>
-<maml:Description><maml:para>{{Fill Surname Description}}
+<maml:Description><maml:para>Last name of the contact.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1391,7 +1428,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>MiddleName</maml:name>
-<maml:Description><maml:para>{{Fill MiddleName Description}}
+<maml:Description><maml:para>Middle name of the contact.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1400,7 +1437,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>Company</maml:name>
-<maml:Description><maml:para>{{Fill Company Description}}
+<maml:Description><maml:para>Name of the contact's company.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1409,7 +1446,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none"><maml:name>Phone</maml:name>
-<maml:Description><maml:para>{{Fill Phone Description}}
+<maml:Description><maml:para>Hash table with phone details of the contact, each key has to match to phone type.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -1418,7 +1455,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none"><maml:name>Email</maml:name>
-<maml:Description><maml:para>{{Fill Email Description}}
+<maml:Description><maml:para>Collection of hash tables with two keys: Email and DisplayName.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable[]</command:parameterValue>
@@ -1427,7 +1464,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none"><maml:name>PhysicalAddress</maml:name>
-<maml:Description><maml:para>{{Fill PhysicalAddress Description}}
+<maml:Description><maml:para>Hash table with physical address details of the contact, each key has to match to physical address type. Each value is another hash table with keys matching to properties of the address.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -1436,7 +1473,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service used to create new contact.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -1447,7 +1484,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none"><maml:name>Company</maml:name>
-<maml:Description><maml:para>{{Fill Company Description}}
+<maml:Description><maml:para>Name of the contact's company.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1456,7 +1493,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none"><maml:name>Email</maml:name>
-<maml:Description><maml:para>{{Fill Email Description}}
+<maml:Description><maml:para>Collection of hash tables with two keys: Email and DisplayName.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable[]</command:parameterValue>
@@ -1465,7 +1502,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>GivenName</maml:name>
-<maml:Description><maml:para>{{Fill GivenName Description}}
+<maml:Description><maml:para>First name of the contact.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1474,7 +1511,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none"><maml:name>MiddleName</maml:name>
-<maml:Description><maml:para>{{Fill MiddleName Description}}
+<maml:Description><maml:para>Middle name of the contact.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1483,7 +1520,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none"><maml:name>Phone</maml:name>
-<maml:Description><maml:para>{{Fill Phone Description}}
+<maml:Description><maml:para>Hash table with phone details of the contact, each key has to match to phone type.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -1492,7 +1529,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none"><maml:name>PhysicalAddress</maml:name>
-<maml:Description><maml:para>{{Fill PhysicalAddress Description}}
+<maml:Description><maml:para>Hash table with physical address details of the contact, each key has to match to physical address type. Each value is another hash table with keys matching to properties of the address.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
@@ -1501,7 +1538,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service used to create new contact.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -1510,7 +1547,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Surname</maml:name>
-<maml:Description><maml:para>{{Fill Surname Description}}
+<maml:Description><maml:para>Last name of the contact.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1538,8 +1575,16 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; New-EWSContact -GivenName John -Surname Doe</dev:code>
+<dev:remarks><maml:para>Create new contact for 'John Doe' without any details populated.
+</maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+<dev:code>PS C:\&gt; $mails = @{ DisplayName = 'John Doe'; email = 'johndoe@live.com' }
+PS C:\&gt; $phones = @{ MobilePhone = '+48 601 602 603'; HomePhone = '+48 22 123 4567' }
+PS C:\&gt; New-EWSContact -GivenName John -Surname Doe -Email $mails -Phone $phones</dev:code>
+<dev:remarks><maml:para>Create new contact for 'John Doe' with e-mail and two phone types specified.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -1550,16 +1595,16 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <command:details><command:name>New-EWSFolder</command:name>
 <command:verb>New</command:verb>
 <command:noun>EWSFolder</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Creates sub-folder in the specified parent folder.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>Function used to create folders in the folder structure of a mailbox. Parent folder can be specified by name (for well known folder names) or Id.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>New-EWSFolder</maml:name>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DisplayName</maml:name>
-<maml:Description><maml:para>{{Fill DisplayName Description}}
+<maml:Description><maml:para>Display name of the created folder.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1568,7 +1613,13 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FolderType</maml:name>
-<maml:Description><maml:para>{{Fill FolderType Description}}
+<maml:Description><maml:para>Type of the folder to create. Supported types: - Mail (default)
+</maml:para>
+<maml:para>- Calendar
+</maml:para>
+<maml:para>- Contacts
+</maml:para>
+<maml:para>- Tasks
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Calendar</command:parameterValue>
@@ -1582,7 +1633,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Mailbox</maml:name>
-<maml:Description><maml:para>{{Fill Mailbox Description}}
+<maml:Description><maml:para>Mailbox where folder will be created.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Mailbox</command:parameterValue>
@@ -1591,7 +1642,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Id"><maml:name>ParentId</maml:name>
-<maml:Description><maml:para>{{Fill ParentId Description}}
+<maml:Description><maml:para>Id of the Parent folder (useful for nested folders).
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">FolderId</command:parameterValue>
@@ -1600,7 +1651,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service object that will be used to create a folder.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -1611,7 +1662,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 </command:syntaxItem>
 <command:syntaxItem><maml:name>New-EWSFolder</maml:name>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DisplayName</maml:name>
-<maml:Description><maml:para>{{Fill DisplayName Description}}
+<maml:Description><maml:para>Display name of the created folder.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1620,7 +1671,13 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FolderType</maml:name>
-<maml:Description><maml:para>{{Fill FolderType Description}}
+<maml:Description><maml:para>Type of the folder to create. Supported types: - Mail (default)
+</maml:para>
+<maml:para>- Calendar
+</maml:para>
+<maml:para>- Contacts
+</maml:para>
+<maml:para>- Tasks
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Calendar</command:parameterValue>
@@ -1634,7 +1691,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Mailbox</maml:name>
-<maml:Description><maml:para>{{Fill Mailbox Description}}
+<maml:Description><maml:para>Mailbox where folder will be created.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Mailbox</command:parameterValue>
@@ -1643,7 +1700,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ParentName</maml:name>
-<maml:Description><maml:para>{{Fill ParentName Description}}
+<maml:Description><maml:para>Well known name of the parent folder (e.g. Inbox, Calendar).
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Calendar</command:parameterValue>
@@ -1688,7 +1745,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service object that will be used to create a folder.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -1699,7 +1756,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>DisplayName</maml:name>
-<maml:Description><maml:para>{{Fill DisplayName Description}}
+<maml:Description><maml:para>Display name of the created folder.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1708,7 +1765,13 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FolderType</maml:name>
-<maml:Description><maml:para>{{Fill FolderType Description}}
+<maml:Description><maml:para>Type of the folder to create. Supported types: - Mail (default)
+</maml:para>
+<maml:para>- Calendar
+</maml:para>
+<maml:para>- Contacts
+</maml:para>
+<maml:para>- Tasks
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1717,7 +1780,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Mailbox</maml:name>
-<maml:Description><maml:para>{{Fill Mailbox Description}}
+<maml:Description><maml:para>Mailbox where folder will be created.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Mailbox</command:parameterValue>
@@ -1726,7 +1789,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Id"><maml:name>ParentId</maml:name>
-<maml:Description><maml:para>{{Fill ParentId Description}}
+<maml:Description><maml:para>Id of the Parent folder (useful for nested folders).
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">FolderId</command:parameterValue>
@@ -1735,7 +1798,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ParentName</maml:name>
-<maml:Description><maml:para>{{Fill ParentName Description}}
+<maml:Description><maml:para>Well known name of the parent folder (e.g. Inbox, Calendar).
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">WellKnownFolderName</command:parameterValue>
@@ -1744,7 +1807,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service object that will be used to create a folder.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -1772,8 +1835,14 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; New-EWSFolder -ParentName Inbox -DisplayName FooBar</dev:code>
+<dev:remarks><maml:para>Create sub-folder FooBar in the folder Inbox.
+</maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+<dev:code>PS C:\&gt; Get-EWSFolder -Path Contacts\Parent | New-EWSFolder -DisplayName Child -FolderType Contacts</dev:code>
+<dev:remarks><maml:para>Create sub-folder Child designed to store Contacts inside Contacts\Parent.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -1784,16 +1853,34 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <command:details><command:name>New-EWSMessage</command:name>
 <command:verb>New</command:verb>
 <command:noun>EWSMessage</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Creates e-mail message.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>Function that can be used to create e-mails. Required parameters: - To
+</maml:para>
+<maml:para>- Subject
+</maml:para>
+<maml:para>- Body
+</maml:para>
+<maml:para>
+</maml:para>
+<maml:para>Latter can be piped in the function.
+</maml:para>
+<maml:para>Optional parameters: - Cc/Bcc
+</maml:para>
+<maml:para>- BodyType
+</maml:para>
+<maml:para>- Attachment
+</maml:para>
+<maml:para>
+</maml:para>
+<maml:para>E-mail is sent and saved to 'Sent Items' folder.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>New-EWSMessage</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Attachment</maml:name>
-<maml:Description><maml:para>{{Fill Attachment Description}}
+<maml:Description><maml:para>Paths to attachments that should be added to the message.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1802,7 +1889,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Bcc</maml:name>
-<maml:Description><maml:para>{{Fill Bcc Description}}
+<maml:Description><maml:para>Background carbon copy - hidden recipients of the e-mail.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1811,7 +1898,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Body</maml:name>
-<maml:Description><maml:para>{{Fill Body Description}}
+<maml:Description><maml:para>Body of the e-mail.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1820,7 +1907,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>BodyType</maml:name>
-<maml:Description><maml:para>{{Fill BodyType Description}}
+<maml:Description><maml:para>Type of the e-mail body. The default is Text.
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">HTML</command:parameterValue>
@@ -1832,7 +1919,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Cc</maml:name>
-<maml:Description><maml:para>{{Fill Cc Description}}
+<maml:Description><maml:para>Carbon copy - indirect recipients of the e-mail.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1841,7 +1928,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service used to create/send message.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -1850,7 +1937,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Subject</maml:name>
-<maml:Description><maml:para>{{Fill Subject Description}}
+<maml:Description><maml:para>Subject of the created message.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1859,7 +1946,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>To</maml:name>
-<maml:Description><maml:para>{{Fill To Description}}
+<maml:Description><maml:para>Main recipients of the message.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1870,7 +1957,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 </command:syntaxItem>
 <command:syntaxItem><maml:name>New-EWSMessage</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Attachment</maml:name>
-<maml:Description><maml:para>{{Fill Attachment Description}}
+<maml:Description><maml:para>Paths to attachments that should be added to the message.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1879,7 +1966,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Bcc</maml:name>
-<maml:Description><maml:para>{{Fill Bcc Description}}
+<maml:Description><maml:para>Background carbon copy - hidden recipients of the e-mail.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1888,7 +1975,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>BodyType</maml:name>
-<maml:Description><maml:para>{{Fill BodyType Description}}
+<maml:Description><maml:para>Type of the e-mail body. The default is Text.
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">HTML</command:parameterValue>
@@ -1900,7 +1987,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Cc</maml:name>
-<maml:Description><maml:para>{{Fill Cc Description}}
+<maml:Description><maml:para>Carbon copy - indirect recipients of the e-mail.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1909,7 +1996,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>InputObject</maml:name>
-<maml:Description><maml:para>{{Fill InputObject Description}}
+<maml:Description><maml:para>Input text that will be used as a message body.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
@@ -1918,7 +2005,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IsHtml</maml:name>
-<maml:Description><maml:para>{{Fill IsHtml Description}}
+<maml:Description><maml:para>Flag to specify that command input is already converted to HTML.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1926,7 +2013,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service used to create/send message.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -1935,7 +2022,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Subject</maml:name>
-<maml:Description><maml:para>{{Fill Subject Description}}
+<maml:Description><maml:para>Subject of the created message.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1944,7 +2031,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>To</maml:name>
-<maml:Description><maml:para>{{Fill To Description}}
+<maml:Description><maml:para>Main recipients of the message.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1955,7 +2042,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Attachment</maml:name>
-<maml:Description><maml:para>{{Fill Attachment Description}}
+<maml:Description><maml:para>Paths to attachments that should be added to the message.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1964,7 +2051,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Bcc</maml:name>
-<maml:Description><maml:para>{{Fill Bcc Description}}
+<maml:Description><maml:para>Background carbon copy - hidden recipients of the e-mail.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -1973,7 +2060,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Body</maml:name>
-<maml:Description><maml:para>{{Fill Body Description}}
+<maml:Description><maml:para>Body of the e-mail.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1982,7 +2069,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>BodyType</maml:name>
-<maml:Description><maml:para>{{Fill BodyType Description}}
+<maml:Description><maml:para>Type of the e-mail body. The default is Text.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">BodyType</command:parameterValue>
@@ -1991,7 +2078,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Cc</maml:name>
-<maml:Description><maml:para>{{Fill Cc Description}}
+<maml:Description><maml:para>Carbon copy - indirect recipients of the e-mail.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -2000,7 +2087,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>InputObject</maml:name>
-<maml:Description><maml:para>{{Fill InputObject Description}}
+<maml:Description><maml:para>Input text that will be used as a message body.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
@@ -2009,7 +2096,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>IsHtml</maml:name>
-<maml:Description><maml:para>{{Fill IsHtml Description}}
+<maml:Description><maml:para>Flag to specify that command input is already converted to HTML.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -2018,7 +2105,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service used to create/send message.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -2027,7 +2114,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Subject</maml:name>
-<maml:Description><maml:para>{{Fill Subject Description}}
+<maml:Description><maml:para>Subject of the created message.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2036,7 +2123,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>To</maml:name>
-<maml:Description><maml:para>{{Fill To Description}}
+<maml:Description><maml:para>Main recipients of the message.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -2064,8 +2151,15 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; New-EWSMessage -To MrBeans@gmail.com -Subject Test -Body 'Mic test: 1... 2... 3...'</dev:code>
+<dev:remarks><maml:para>Sends e-mail to MrBeans@gmail.com using last connected service with subject Test and specified body.
+</maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+<dev:code>PS C:\&gt; $html = Get-ChildItem | Select-Object -Property Name, Length, LastWriteTime | ConvertTo-Html 
+PS C:\&gt; $html | New-EWSMessage -To MrBeans@gmail.com -Subject Test -Body 'Mic test: 1... 2... 3...' -IsHtml -BodyType HTML</dev:code>
+<dev:remarks><maml:para>Generates HTML document from the output of Get-ChildITem Sends e-mail to MrBeans@gmail.com using last connected service with subject Test and $html as HTML body.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -2209,7 +2303,7 @@ PS C:\&gt; Move-EWSItem -DestinationPath Inbox -Folder $item</dev:code>
 </maml:para>
 </dev:remarks>
 </command:example>
-<command:example><maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+<command:example><maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
 <dev:code>PS C:\&gt; $folder = Get-EWSFolder -Path Inbox\ToDelete
 PS C:\&gt; Remove-EWSFolder -Folder $folder -DeleteMode HardDelete -Confirm:$false</dev:code>
 <dev:remarks><maml:para>Deletes Inbox\ToDelete folder using HardDelete mode.
@@ -2354,7 +2448,7 @@ PS C:\&gt; Remove-EWSFolder -Folder $folder -DeleteMode HardDelete -Confirm:$fal
 </maml:para>
 </dev:remarks>
 </command:example>
-<command:example><maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+<command:example><maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
 <dev:code>PS C:\&gt; $item = Get-EWSFolder -Path Inbox\ToDelete | Get-EWSItem -Filter IsRead:true -Limit 1
 PS C:\&gt; Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false</dev:code>
 <dev:remarks><maml:para>Deletes first read (IsRead:true) item from Inbox\ToDelete folder using HardDelete mode.
@@ -2368,16 +2462,16 @@ PS C:\&gt; Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false</
 <command:details><command:name>Save-EWSAttachment</command:name>
 <command:verb>Save</command:verb>
 <command:noun>EWSAttachment</command:noun>
-<maml:description><maml:para>{{Fill in the Synopsis}}
+<maml:description><maml:para>Saves attachment (or attachments) to disk.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>{{Fill in the Description}}
+<maml:description><maml:para>Function used to save attachments found in items to disk. Need to be used in combination with Get-EWSAttachment.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Save-EWSAttachment</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>Path</maml:name>
-<maml:Description><maml:para>{{Fill Path Description}}
+<maml:Description><maml:para>Folder where attachments should be saved.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2386,7 +2480,7 @@ PS C:\&gt; Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false</
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none"><maml:name>Attachment</maml:name>
-<maml:Description><maml:para>{{Fill Attachment Description}}
+<maml:Description><maml:para>Attachment object that should be saved to disk (retrieved using Get-EWSAttachment).
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">FileAttachment[]</command:parameterValue>
@@ -2395,7 +2489,7 @@ PS C:\&gt; Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false</
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service object that will be used to get/save attachment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -2404,7 +2498,7 @@ PS C:\&gt; Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false</
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the function.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -2412,7 +2506,7 @@ PS C:\&gt; Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false</
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+<maml:Description><maml:para>Shows what would happen if the function runs. The function is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -2422,7 +2516,7 @@ PS C:\&gt; Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false</
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none"><maml:name>Attachment</maml:name>
-<maml:Description><maml:para>{{Fill Attachment Description}}
+<maml:Description><maml:para>Attachment object that should be saved to disk (retrieved using Get-EWSAttachment).
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">FileAttachment[]</command:parameterValue>
@@ -2431,7 +2525,7 @@ PS C:\&gt; Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false</
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+<maml:Description><maml:para>Prompts you for confirmation before running the function.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -2440,7 +2534,7 @@ PS C:\&gt; Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false</
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>Path</maml:name>
-<maml:Description><maml:para>{{Fill Path Description}}
+<maml:Description><maml:para>Folder where attachments should be saved.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2449,7 +2543,7 @@ PS C:\&gt; Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false</
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>Service</maml:name>
-<maml:Description><maml:para>{{Fill Service Description}}
+<maml:Description><maml:para>Service object that will be used to get/save attachment.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExchangeService</command:parameterValue>
@@ -2458,7 +2552,7 @@ PS C:\&gt; Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false</
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+<maml:Description><maml:para>Shows what would happen if the function runs. The function is not run.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -2486,8 +2580,9 @@ PS C:\&gt; Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false</
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<dev:code>PS C:\&gt; $item = Get-EWSItem -Name Inbox -Filter 'from:Sebastian and hasAttachment:true' -Limit 1
+PS C:\&gt; Get-EWSAttachment -Item $item | Save-EWSAttachment -Path c:\temp\</dev:code>
+<dev:remarks><maml:para>Saves attachment from e-mail to c:\temp\ folder.
 </maml:para>
 </dev:remarks>
 </command:example>
