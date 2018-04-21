@@ -1,0 +1,17 @@
+install:
+    - ps: |
+        # Here we install Pester - needed for tests.
+        Install-Module Pester
+
+build_script:
+    - ps: |
+        # TODO: create external help in en-US folder
+        # New-ExternalHelp -OutputPath en-US -Path .\docs -Force
+
+test_script:
+    - ps: |
+        # TODO: load the Greet module and write a script
+        # that will throw if docs are not up-to-date with the code.
+        # In other words, if Update-MarkdownHelp changes the markdown.
+        Import-Module .\EWS
+        Invoke-Pester .\Tests

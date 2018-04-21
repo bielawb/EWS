@@ -135,7 +135,7 @@ PrivateData = @{
         IconUri = 'https://raw.githubusercontent.com/bielawb/EWS/master/EWSModuleLogo.png'
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = 'https://github.com/bielawb/EWS/releases/tag/1.1'
 
     } # End of PSData hashtable
 
