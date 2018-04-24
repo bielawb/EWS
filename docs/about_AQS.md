@@ -1,57 +1,56 @@
 ﻿# AQS
 ## about_AQS
 
-```
-ABOUT TOPIC NOTE:
-The first header of the about topic should be the topic name.
-The second header contains the lookup name used by the help system.
-
-IE:
-# Some Help Topic Name
-## SomeHelpTopicFileName
-
-This will be transformed into the text file
-as `about_SomeHelpTopicFileName`.
-Do not include file extensions.
-The second header should have no spaces.
-```
-
 # SHORT DESCRIPTION
-{{ Short Description Placeholder }}
-
-```
-ABOUT TOPIC NOTE:
-About topics can be no longer than 80 characters wide when rendered to text.
-Any topics greater than 80 characters will be automatically wrapped.
-The generated about topic will be encoded UTF-8.
-```
+Advanced Query Syntax (AQS) is a language that we can use to filter EWS results.
+This document describes basic functionality offered by it.
 
 # LONG DESCRIPTION
-{{ Long Description Placeholder }}
+Anytime filtering is required in Exchange Web Services (EWS), we can use 
+Advanced Query Syntax (AQS). This filtering language is pretty natural and 
+in general - easy to use.
 
-## Optional Subtopics
-{{ Optional Subtopic Placeholder }}
+Syntax for a single property search:
+```
+property:value
+otherProperty:"Value with spaces"
+```
+
+For some values (like dates or sizes) we can also use compare operators:
+```
+size:>=100000
+```
+
+Finally, we can use range operator:
+```
+size:700..800
+```
+
+For dates we can use keywords (today, tomorrow, coming year)
+
+We can also use brackets and logical AND and OR operators:
+```
+from:(Adam or Ewa) AND subject:paradise
+```
+
+
 
 # EXAMPLES
-{{ Code or descriptive examples of how to leverage the functions described. }}
+```powershell
+Get-EWSItem -Filter subject:PowerShell
+```
+Search for any item with PowerShell in the subject.
 
-# NOTE
-{{ Note Placeholder - Additional information that a user needs to know.}}
+```powershell
+Get-EWSItem -Filter isread:false
+```
+Search for items that were not read.
 
-# TROUBLESHOOTING NOTE
-{{ Troubleshooting Placeholder - Warns users of bugs}}
-
-{{ Explains behavior that is likely to change with fixes }}
 
 # SEE ALSO
-{{ See also placeholder }}
-
-{{ You can also list related articles, blogs, and video URLs. }}
+https://msdn.microsoft.com/en-us/library/office/dn579420(v=exchg.150).aspx
 
 # KEYWORDS
-{{List alternate names or titles for this topic that readers might use.}}
 
-- {{ Keyword Placeholder }}
-- {{ Keyword Placeholder }}
-- {{ Keyword Placeholder }}
-- {{ Keyword Placeholder }}
+- AQS
+- Advanced Query Syntax
