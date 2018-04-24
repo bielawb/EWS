@@ -60,14 +60,13 @@ function Get-EWSItem {
         }
 
         $view = New-Object Microsoft.Exchange.WebServices.Data.ItemView $PageSize, 0
-        do {   
-            if ($Filter) {
+        do {
+            if ($Filter) {
                 $list = $Folder.FindItems($Filter, $view)
-            }
-            else {
+            } else {
                 $list = $Folder.FindItems($view)
             }
-        
+
             if ($PropertySet -and $list.TotalCount) {
                 $set = New-Object Microsoft.Exchange.WebServices.Data.PropertySet $PropertySet
                 $Service.LoadPropertiesForItems(
