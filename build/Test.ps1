@@ -1,7 +1,7 @@
 Import-Module -Name Pester
 Import-Module -Name .\EWS
 Import-Module -Name .\tests\Assertions.psm1
-Invoke-Pester -Script .\tests\ -OutputFormat NUnitXml -OutputFile .\tests\results.xml
+$out = Invoke-Pester -Script .\tests\ -OutputFormat NUnitXml -OutputFile .\tests\results.xml -PassThru
 try {
     [System.Net.WebClient]::
         new().
@@ -11,4 +11,8 @@ try {
         )
 } catch {
     throw "Failed to upload tests - $_"
+}
+
+if ($failed = $out.FailedCount) {
+    throw "Failed tests: $failed"
 }

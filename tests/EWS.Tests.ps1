@@ -20,7 +20,7 @@ Describe "$prefix - manifest" {
         }
 
         It 'Uris should point to github project' {
-            $githubUri = 'https://github.com/bielawb/EWS/*'
+            $githubUri = 'https://github.com/bielawb/EWS*'
             $module.LicenseUri | Should -BeLike $githubUri
             $module.ProjectUri | Should -BeLike $githubUri
         }
