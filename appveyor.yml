@@ -1,12 +1,11 @@
 install:
-    - ps: |
-        .\build\Install.ps1
-
+    - ps: .\build\Install.ps1
 
 build_script:
-    - ps: |
-        .\build\Build.ps1
+    - ps: .\build\Build.ps1
 
 test_script:
-    - ps: |
-        .\build\Test.ps1
+    - ps: .\build\Test.ps1
+
+on_success:
+    - ps: .\build\Publish.ps1
