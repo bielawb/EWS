@@ -12,7 +12,7 @@
 RootModule = 'EWS.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.1'
+ModuleVersion = '1.1.4'
 
 # ID used to uniquely identify this module
 GUID = 'd1acb385-ff90-400f-ac66-04ba0da20ed4'
@@ -97,6 +97,7 @@ FunctionsToExport = @(
        'New-EWSMessage'
     
    'Connect-EWSService'
+       'Get-EWSService'
 )
 
 # Cmdlets to export from this module

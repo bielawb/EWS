@@ -53,6 +53,8 @@ function New-EWSContact {
         })]
         [hashtable]$PhysicalAddress,
         
+        [Microsoft.Exchange.WebServices.Data.FolderId]$FolderId,
+        
         [Parameter(
                 ValueFromPipelineByPropertyName
         )]
@@ -101,6 +103,11 @@ function New-EWSContact {
                 Street = $PhysicalAddress[$key].Street
             }
     }
-    $contact.Save()
+    if ($FolderId) {
+        $contact.Save($FolderId)
+    }
+    else {
+        $contact.Save()
+    }
     $contact
 }

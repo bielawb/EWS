@@ -36,7 +36,7 @@ function Get-EWSFolder  {
     try {
         $rootFolder = New-Object Microsoft.Exchange.WebServices.Data.FolderId $rootFolderName, $Mailbox
     } catch {
-        throw "Unexpected error occured: $_"
+        throw "Unexpected error occurred: $_"
     }
     $root = [Microsoft.Exchange.WebServices.Data.Folder]::Bind(
         $Service,
