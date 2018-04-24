@@ -39,7 +39,7 @@ function Move-EWSItem {
         try {
             $rootId = New-Object Microsoft.Exchange.WebServices.Data.FolderId $rootName, $Mailbox
         } catch {
-            throw "Unexpected error occured: $_"
+            throw "Unexpected error occurred: $_"
         }
         $root = [Microsoft.Exchange.WebServices.Data.Folder]::Bind(
             $Service,

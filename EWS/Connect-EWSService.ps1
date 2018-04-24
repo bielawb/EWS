@@ -1,7 +1,7 @@
 function Connect-EWSService {
     [OutputType('Microsoft.Exchange.WebServices.Data.ExchangeService')]
     [CmdletBinding()]
-    param (		
+    param (
         [Parameter(
                 Mandatory
         )]

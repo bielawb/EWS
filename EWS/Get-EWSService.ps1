@@ -2,7 +2,7 @@
     [OutputType('Microsoft.Exchange.WebServices.Data.ExchangeService')]
     [CmdletBinding()]
     Param(
-        
+
     )
     if ($Script:exchangeService){
         $Script:exchangeService
