@@ -1,6 +1,7 @@
 ---
 external help file: EWS-help.xml
-online version: 
+Module Name: EWS
+online version:
 schema: 2.0.0
 ---
 
@@ -12,7 +13,7 @@ Gets folder inside selected mailbox.
 ## SYNTAX
 
 ```
-Get-EWSFolder [-Path] <String> [[-Service] <ExchangeService>] [[-Mailbox] <Mailbox>]
+Get-EWSFolder [-Path] <String> [[-Service] <ExchangeService>] [[-Mailbox] <Mailbox>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,14 +29,14 @@ If service/mailbox are not specified, default values are used:
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 PS C:\> Get-EWSFolder -Path Inbox
 ```
 
 Object representing Inbox in the last connected service is returned.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 PS C:\> Get-EWSFolder -Path Inbox\A
 ```
@@ -45,7 +46,7 @@ If folder 'A' doesn't exist, object representing Inbox in the last connected ser
 If there is any folder underneath the Inbox with name that matches A, it's returned too.
 Finally if A exists, only that folder is returned.
 
-### -------------------------- EXAMPLE 3 --------------------------
+### EXAMPLE 3
 ```
 PS C:\> Get-EWSFolder -Path Calendar -Service $myService
 ```
@@ -60,7 +61,7 @@ Mailbox where folder is located.
 ```yaml
 Type: Mailbox
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -77,7 +78,7 @@ WellKnownFolder\Partial\MatchTo - returns parent folder and any folder matching 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -92,7 +93,7 @@ Service used to communicate with selected mailbox.
 ```yaml
 Type: ExchangeService
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -101,17 +102,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
-
 
 ## OUTPUTS
 
 ### Microsoft.Exchange.WebServices.Data.Folder
 
-
 ## NOTES
 
 ## RELATED LINKS
-

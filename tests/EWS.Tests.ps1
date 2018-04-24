@@ -46,31 +46,79 @@ Describe "$prefix - manifest" {
 }
 
 Describe "$prefix - Help" {
+    $placeholderPattern = '{{.*Placeholder.*}}'
+    
     Context 'About topics' {
-        It 'Should contain global about topic' {
-            '.\EWS\en-US\about_EWS.help.txt' | Should -Exist
-        }
+        $aboutTestCases = @(
+            @{
+                Name = 'global'
+                File = 'about_EWS'
+            }
+            @{
+                Name = 'advanced query syntax'
+                File = 'about_AQS'
+            }
+        )
 
-        It 'Should contain advanced query syntax about topic' {
-            '.\EWS\en-US\about_AQS.help.txt' | Should -Exist
-        }
+        It 'Should contain <Name> about topic' {
+            param ($Name, $File)
+            ".\EWS\en-US\$File.help.txt" | Should -Exist
+        } -TestCases $aboutTestCases
+
+        It 'Should not have placeholders in <Name> about topic' {
+            param ($Name, $File)
+            ".\EWS\en-US\$File.help.txt" | Should -Not -FileContentMatch $placeholderPattern
+        } -TestCases $aboutTestCases
     }
 
     Context 'Commands help' {
         foreach ($command in $module.ExportedCommands.Keys) {
             $help = Get-Help -Name $command -ErrorAction SilentlyContinue
+            
+            $testCases = @(
+                @{
+                    Section = 'Description'
+                }
+                @{
+                    Section = 'Synopsis'
+                }
+                @{
+                    Section = 'Examples'
+                }
+            )
 
-            It "Command $command should have help/Synopsis" {
-                $help.Synopsis | Should -Not -BeNullOrEmpty
-            }
+            It "Command $command should have help/<Section>" {
+                param ($Section)
+                $help.$Section | Should -Not -BeNullOrEmpty
+            } -TestCases $testCases
 
-            It "Command $command should have help/Description" {
-                $help.Description | Should -Not -BeNullOrEmpty
-            }
+            It "Command $command <Section> should not contain placeholders" {
+                param ($Section)
+                $help.$Section | Should -Not -Match $placeholderPattern
+            } -TestCases $testCases
 
             It "Command $command should have at least two examples in help" {
                 $help.examples.example.Count | Should -BeGreaterOrEqual 2
             }
+
+            $parametersTestCases = @(
+                foreach ($parameter in $help.parameters.parameter) {
+                    @{
+                        Name = $parameter.Name
+                        Description = $parameter.Description
+                    }
+                }
+            )
+            
+            It 'Parameter <Name> should have description' {
+                param ($Name, $Description)
+                $Description | Should -Not -BeNullOrEmpty
+            } -TestCases $parametersTestCases
+
+            It 'Description of parameter <Name> should not contain placeholders' {
+                param ($Name, $Description)
+                $Description | Should -Not -Match $placeholderPattern
+            } -TestCases $parametersTestCases
         }
     }
 }

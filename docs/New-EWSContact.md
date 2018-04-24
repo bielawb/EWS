@@ -1,6 +1,7 @@
 ---
 external help file: EWS-help.xml
-online version: 
+Module Name: EWS
+online version:
 schema: 2.0.0
 ---
 
@@ -14,7 +15,7 @@ Creates new contacts using provided contact details.
 ```
 New-EWSContact [[-GivenName] <String>] [[-Surname] <String>] [[-MiddleName] <String>] [[-Company] <String>]
  [[-Phone] <Hashtable>] [[-Email] <Hashtable[]>] [[-PhysicalAddress] <Hashtable>]
- [[-Service] <ExchangeService>]
+ [[-Service] <ExchangeService>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,14 +29,14 @@ Emails, on the other hand, accepts array of hash tables, each with two keys: Dis
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 PS C:\> New-EWSContact -GivenName John -Surname Doe
 ```
 
 Create new contact for 'John Doe' without any details populated.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 PS C:\> $mails = @{ DisplayName = 'John Doe'; email = 'johndoe@live.com' }
 PS C:\> $phones = @{ MobilePhone = '+48 601 602 603'; HomePhone = '+48 22 123 4567' }
@@ -52,7 +53,7 @@ Name of the contact's company.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -67,7 +68,7 @@ Collection of hash tables with two keys: Email and DisplayName.
 ```yaml
 Type: Hashtable[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -82,7 +83,7 @@ First name of the contact.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -97,7 +98,7 @@ Middle name of the contact.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -112,7 +113,7 @@ Hash table with phone details of the contact, each key has to match to phone typ
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -128,7 +129,7 @@ Each value is another hash table with keys matching to properties of the address
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -143,7 +144,7 @@ Service used to create new contact.
 ```yaml
 Type: ExchangeService
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -158,7 +159,7 @@ Last name of the contact.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -167,17 +168,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Exchange.WebServices.Data.ExchangeService
-
 
 ## OUTPUTS
 
 ### Microsoft.Exchange.WebServices.Data.Contact
 
-
 ## NOTES
 
 ## RELATED LINKS
-

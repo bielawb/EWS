@@ -1,6 +1,7 @@
 ---
 external help file: EWS-help.xml
-online version: 
+Module Name: EWS
+online version:
 schema: 2.0.0
 ---
 
@@ -14,13 +15,13 @@ Gets items inside selected mailbox and specified folder.
 ### byId (Default)
 ```
 Get-EWSItem [-Filter] <String> -Id <FolderId> [-Service <ExchangeService>] [-PropertySet <BasePropertySet>]
- [-PageSize <Int32>] [-Limit <Int32>]
+ [-PageSize <Int32>] [-Limit <Int32>] [<CommonParameters>]
 ```
 
 ### byName
 ```
 Get-EWSItem [-Filter] <String> -Name <WellKnownFolderName> [-Service <ExchangeService>]
- [-PropertySet <BasePropertySet>] [-PageSize <Int32>] [-Limit <Int32>]
+ [-PropertySet <BasePropertySet>] [-PageSize <Int32>] [-Limit <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +36,7 @@ By default not all properties are returned - behavior that can be changed by spe
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 PS C:\> Get-EWSFolder Inbox\Urgent | Get-EWSItem -Filter subject:Call
 ```
@@ -43,7 +44,7 @@ PS C:\> Get-EWSFolder Inbox\Urgent | Get-EWSItem -Filter subject:Call
 Gets all items in sub-folder 'Urgent' in Inbox of last connected service/mailbox.
 Items are filtered out and only items that have a word 'call' somewhere in the subject are returned.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 PS C:\> Get-EWSItem -Name Inbox -Filter body:Azure -Limit 5
 ```
@@ -61,7 +62,7 @@ Uses AQL syntax (https://msdn.microsoft.com/en-us/library/office/dn579420(v=exch
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -76,7 +77,7 @@ Id of the folder that items will be retrieved from.
 ```yaml
 Type: FolderId
 Parameter Sets: byId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -91,7 +92,7 @@ Number of items that should be returned in total.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -106,7 +107,7 @@ Name of the well known folder (e.g. Calendar, Inbox, Contacts)
 ```yaml
 Type: WellKnownFolderName
 Parameter Sets: byName
-Aliases: 
+Aliases:
 Accepted values: Calendar, Contacts, DeletedItems, Drafts, Inbox, Journal, Notes, Outbox, SentItems, Tasks, MsgFolderRoot, PublicFoldersRoot, Root, JunkEmail, SearchFolders, VoiceMail, RecoverableItemsRoot, RecoverableItemsDeletions, RecoverableItemsVersions, RecoverableItemsPurges, ArchiveRoot, ArchiveMsgFolderRoot, ArchiveDeletedItems, ArchiveRecoverableItemsRoot, ArchiveRecoverableItemsDeletions, ArchiveRecoverableItemsVersions, ArchiveRecoverableItemsPurges, SyncIssues, Conflicts, LocalFailures, ServerFailures, RecipientCache, QuickContacts, ConversationHistory, ToDoSearch
 
 Required: True
@@ -122,7 +123,7 @@ Number of items tha should be returned per page of results.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -137,7 +138,7 @@ Optional parameter used to change set of properties returned.
 ```yaml
 Type: BasePropertySet
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: IdOnly, FirstClassProperties
 
 Required: False
@@ -153,7 +154,7 @@ Service object that will be used to retrieve items.
 ```yaml
 Type: ExchangeService
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -162,18 +163,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Exchange.WebServices.Data.FolderId
 Microsoft.Exchange.WebServices.Data.ExchangeService
 
-
 ## OUTPUTS
 
 ### Microsoft.Exchange.WebServices.Data.Item
 
-
 ## NOTES
 
 ## RELATED LINKS
-

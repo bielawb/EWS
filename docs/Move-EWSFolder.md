@@ -1,6 +1,7 @@
 ---
 external help file: EWS-help.xml
-online version: 
+Module Name: EWS
+online version:
 schema: 2.0.0
 ---
 
@@ -13,24 +14,23 @@ Moves folder to a different location.
 
 ```
 Move-EWSFolder [-DestinationPath] <String> [-Folder] <Folder> [[-Service] <ExchangeService>] [-WhatIf]
- [-Confirm]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Function used to move folder from current location to the new location.
 Destination folder has to exist for move to succeed.
 
-
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 PS C:\> Get-EWSFolder -Path Inbox\Test | Move-EWSFolder -DestinationPath Inbox\Parent
 ```
 
 Folder 'Test' located inside Inbox is moved as a sub-folder to Inbox\Parent.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 PS C:\> $folder = Get-EWSFolder -Path Inbox\Parent\Test 
 PS C:\> Move-EWSFolder -DestinationPath Inbox -Folder $folder
@@ -61,7 +61,7 @@ Path to the folder where the folder should be moved.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -76,7 +76,7 @@ Folder object that should be moved (retrieved using Get-EWSFolder).
 ```yaml
 Type: Folder
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -91,7 +91,7 @@ Service object that will be used to move folder.
 ```yaml
 Type: ExchangeService
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -116,11 +116,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Exchange.WebServices.Data.Folder
 Microsoft.Exchange.WebServices.Data.ExchangeService
-
 
 ## OUTPUTS
 
@@ -129,4 +131,3 @@ Microsoft.Exchange.WebServices.Data.ExchangeService
 ## NOTES
 
 ## RELATED LINKS
-
