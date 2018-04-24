@@ -1,57 +1,30 @@
 ﻿# EWS
 ## about_EWS
 
-```
-ABOUT TOPIC NOTE:
-The first header of the about topic should be the topic name.
-The second header contains the lookup name used by the help system.
-
-IE:
-# Some Help Topic Name
-## SomeHelpTopicFileName
-
-This will be transformed into the text file
-as `about_SomeHelpTopicFileName`.
-Do not include file extensions.
-The second header should have no spaces.
-```
-
 # SHORT DESCRIPTION
-{{ Short Description Placeholder }}
+Exchange Web Services (EWS) module is a thin wrapper around library,
+that allows working with EWS inside PowerShell.
 
-```
-ABOUT TOPIC NOTE:
-About topics can be no longer than 80 characters wide when rendered to text.
-Any topics greater than 80 characters will be automatically wrapped.
-The generated about topic will be encoded UTF-8.
-```
+It covers only a part of functionality offered by EWS.
 
 # LONG DESCRIPTION
-{{ Long Description Placeholder }}
 
-## Optional Subtopics
-{{ Optional Subtopic Placeholder }}
+EWS is web service that makes it relatively easy to automate tasks around
+Exchange-hosted mailboxes: both on premise, in the cloud and offered by outlook.com.
 
-# EXAMPLES
-{{ Code or descriptive examples of how to leverage the functions described. }}
+In order to work with it you first need to connect to any exchange service.
+Once connection is established, service object is saved within module scope.
 
-# NOTE
-{{ Note Placeholder - Additional information that a user needs to know.}}
+From this point on you can see folders, items in them, create items of different types.
 
-# TROUBLESHOOTING NOTE
-{{ Troubleshooting Placeholder - Warns users of bugs}}
-
-{{ Explains behavior that is likely to change with fixes }}
+In essence - sky is the limit!
 
 # SEE ALSO
-{{ See also placeholder }}
-
-{{ You can also list related articles, blogs, and video URLs. }}
+Link to library used in this module: https://github.com/OfficeDev/ews-managed-api
 
 # KEYWORDS
-{{List alternate names or titles for this topic that readers might use.}}
-
-- {{ Keyword Placeholder }}
-- {{ Keyword Placeholder }}
-- {{ Keyword Placeholder }}
-- {{ Keyword Placeholder }}
+- EWS
+- Exchange
+- Office365
+- Outlook.com
+- Exchange Web Services

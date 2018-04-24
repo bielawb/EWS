@@ -46,7 +46,7 @@ Describe "$prefix - manifest" {
 }
 
 Describe "$prefix - Help" {
-    $placeholderPattern = '{{.*Placeholder.*}}'
+    $placeholderPattern = '{{.*}}'
     
     Context 'About topics' {
         $aboutTestCases = @(
@@ -110,15 +110,17 @@ Describe "$prefix - Help" {
                 }
             )
             
-            It 'Parameter <Name> should have description' {
-                param ($Name, $Description)
-                $Description | Should -Not -BeNullOrEmpty
-            } -TestCases $parametersTestCases
+            if ($parametersTestCases.Count) {
+                It 'Parameter <Name> should have description' {
+                    param ($Name, $Description)
+                    $Description | Should -Not -BeNullOrEmpty
+                } -TestCases $parametersTestCases
 
-            It 'Description of parameter <Name> should not contain placeholders' {
-                param ($Name, $Description)
-                $Description | Should -Not -Match $placeholderPattern
-            } -TestCases $parametersTestCases
+                It 'Description of parameter <Name> should not contain placeholders' {
+                    param ($Name, $Description)
+                    $Description | Should -Not -Match $placeholderPattern
+                } -TestCases $parametersTestCases
+            }
         }
     }
 }
