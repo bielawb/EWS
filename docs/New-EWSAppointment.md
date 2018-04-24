@@ -53,6 +53,14 @@ PS C:\> New-EWSAppointment -Subject Dentist -Body 'Visit Dentist' -Start (Get-Da
 
 Creates appointment in the calendar about Dentist visit planned for tomorrow that will take half of an hour.
 
+### EXAMPLE 1
+```
+PS C:\> Get-Content Appointment.txt | New-EWSAppointment -Subject Meeting -Start (Get-Date).AddDays(1) -Duration 0:30:0
+```
+
+Creates appointment in the calendar about Meeting using contents of the file as a body.
+
+
 ## PARAMETERS
 
 ### -Attachment

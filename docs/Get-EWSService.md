@@ -24,7 +24,7 @@ This function allows user to see active connections to EWS.
 
 ### Example 1
 ```powershell
-Get-EWSService
+PS C:\> Get-EWSService
 ```
 ```
 No Active Session Found
@@ -33,8 +33,8 @@ Before creating connection, function returns information about it.
 
 ### Example 2
 ```powershell
-$null = Connect-EWSService @connectionParameters
-Get-EWService | Select-Object -Property Url
+PS C:\> $null = Connect-EWSService @connectionParameters
+PS C:\> Get-EWService | Select-Object -Property Url
 ```
 ```
 Url

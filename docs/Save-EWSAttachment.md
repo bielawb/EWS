@@ -31,6 +31,13 @@ PS C:\> Get-EWSAttachment -Item $item | Save-EWSAttachment -Path c:\temp\
 
 Saves attachment from e-mail to c:\temp\ folder.
 
+### EXAMPLE 2
+```
+PS C:\> Get-EWSItem -Name Inbox -Filter 'hasAttachment:true' -Limit 1 | Get-EWSAttachment | Save-EWSAttachment -Path c:\temp\
+```
+
+Saves attachment from e-mail to c:\temp\ folder using direct pipeline input.
+
 ## PARAMETERS
 
 ### -Attachment

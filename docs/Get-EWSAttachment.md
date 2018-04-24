@@ -31,6 +31,14 @@ PS C:\> Get-EWSAttachment -Item $item
 Gets first e-mail sent from 'Sebastian' that has attachments.
 List any attachment find in this e-mail.
 
+
+### EXAMPLE 2
+```
+PS C:\> Get-EWSItem -Name Inbox -Filter 'hasAttachment:true' -Limit 5 | Get-EWSAttachment
+```
+
+Gets first five e-mails with attachments in them and collects information about any attachment found.
+
 ## PARAMETERS
 
 ### -Item
