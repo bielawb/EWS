@@ -1,6 +1,7 @@
 ---
 external help file: EWS-help.xml
-online version: 
+Module Name: EWS
+online version:
 schema: 2.0.0
 ---
 
@@ -13,7 +14,7 @@ Clears content of a folder.
 
 ```
 Clear-EWSFolder [[-DeleteMode] <DeleteMode>] [[-Service] <ExchangeService>] [-Folder] <Folder>
- [-IncludeSubfolders] [-WhatIf] [-Confirm]
+ [-IncludeSubfolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +29,7 @@ User can specify mode that will be used to delete items/folders:
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 PS C:\> Get-EWSFolder Inbox\ToDelete | Clear-EWSFolder
 ```
@@ -37,7 +38,7 @@ Clears content of Inbox\ToDelete folder, leaving sub-folders intact.
 Will prompt the user before performing the operation.
 Uses MoveToDeletedItems mode to remove items (default).
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 PS C:\> Get-EWSFolder Inbox\ToDelete | Clear-EWSFolder -IncludeSubfolders -Confirm:$false -DeleteMode HardDelete
 ```
@@ -70,7 +71,7 @@ Will use MoveToDeletedItems mode when nothing is specified.
 ```yaml
 Type: DeleteMode
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: HardDelete, SoftDelete, MoveToDeletedItems
 
 Required: False
@@ -86,7 +87,7 @@ Folder object that should be moved (retrieved using Get-EWSFolder).
 ```yaml
 Type: Folder
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -101,7 +102,7 @@ Flag to specify if sub-folders and items in them should be removed too.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -116,7 +117,7 @@ Service object that will be used to move folder.
 ```yaml
 Type: ExchangeService
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -141,11 +142,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Exchange.WebServices.Data.ExchangeService
 Microsoft.Exchange.WebServices.Data.Folder
-
 
 ## OUTPUTS
 
@@ -154,4 +157,3 @@ Microsoft.Exchange.WebServices.Data.Folder
 ## NOTES
 
 ## RELATED LINKS
-

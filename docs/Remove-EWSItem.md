@@ -1,6 +1,7 @@
 ---
 external help file: EWS-help.xml
-online version: 
+Module Name: EWS
+online version:
 schema: 2.0.0
 ---
 
@@ -13,6 +14,7 @@ Removes item in a specified delete mode.
 
 ```
 Remove-EWSItem [[-DeleteMode] <DeleteMode>] [[-Service] <ExchangeService>] [-Item] <Item> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +25,7 @@ Function used to remove item in one of three ways:
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 PS C:\> Get-EWSFolder -Path Inbox\ToDelete | Get-EWSItem -Filter IsRead:true | Remove-EWSItem
 ```
@@ -31,7 +33,7 @@ PS C:\> Get-EWSFolder -Path Inbox\ToDelete | Get-EWSItem -Filter IsRead:true | R
 Prompts user to confirm deletion of read (IsRead:true) items in Inbox\ToDelete folder.
 Once confirmed delete items using MoveToDeletedItems (default) DeleteMode.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 PS C:\> $item = Get-EWSFolder -Path Inbox\ToDelete | Get-EWSItem -Filter IsRead:true -Limit 1
 PS C:\> Remove-EWSItem -Folder $item -DeleteMode HardDelete -Confirm:$false
@@ -62,7 +64,7 @@ Mode used to delete item. If not specified, MoveToDeletedItems mode is used.
 ```yaml
 Type: DeleteMode
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: HardDelete, SoftDelete, MoveToDeletedItems
 
 Required: False
@@ -78,7 +80,7 @@ Item object that should be removed (retrieved using Get-EWSItem).
 ```yaml
 Type: Item
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -93,7 +95,7 @@ Service object that will be used to remove item.
 ```yaml
 Type: ExchangeService
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -118,11 +120,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Exchange.WebServices.Data.ExchangeService
 Microsoft.Exchange.WebServices.Data.Item
-
 
 ## OUTPUTS
 
@@ -131,4 +135,3 @@ Microsoft.Exchange.WebServices.Data.Item
 ## NOTES
 
 ## RELATED LINKS
-

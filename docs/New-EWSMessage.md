@@ -1,6 +1,7 @@
 ---
 external help file: EWS-help.xml
-online version: 
+Module Name: EWS
+online version:
 schema: 2.0.0
 ---
 
@@ -14,13 +15,13 @@ Creates e-mail message.
 ### inline (Default)
 ```
 New-EWSMessage -To <String[]> [-Cc <String[]>] [-Bcc <String[]>] -Subject <String> -Body <String>
- [-BodyType <BodyType>] [-Attachment <String[]>] [-Service <ExchangeService>]
+ [-BodyType <BodyType>] [-Attachment <String[]>] [-Service <ExchangeService>] [<CommonParameters>]
 ```
 
 ### pipe
 ```
 New-EWSMessage -To <String[]> [-Cc <String[]>] [-Bcc <String[]>] -Subject <String> [-BodyType <BodyType>]
- [-Attachment <String[]>] -InputObject <Object> [-IsHtml] [-Service <ExchangeService>]
+ [-Attachment <String[]>] -InputObject <Object> [-IsHtml] [-Service <ExchangeService>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,14 +42,14 @@ E-mail is sent and saved to 'Sent Items' folder.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 PS C:\> New-EWSMessage -To MrBeans@gmail.com -Subject Test -Body 'Mic test: 1... 2... 3...'
 ```
 
 Sends e-mail to MrBeans@gmail.com using last connected service with subject Test and specified body.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 PS C:\> $html = Get-ChildItem | Select-Object -Property Name, Length, LastWriteTime | ConvertTo-Html 
 PS C:\> $html | New-EWSMessage -To MrBeans@gmail.com -Subject Test -Body 'Mic test: 1... 2... 3...' -IsHtml -BodyType HTML
@@ -56,7 +57,6 @@ PS C:\> $html | New-EWSMessage -To MrBeans@gmail.com -Subject Test -Body 'Mic te
 
 Generates HTML document from the output of Get-ChildITem
 Sends e-mail to MrBeans@gmail.com using last connected service with subject Test and $html as HTML body.
-
 
 ## PARAMETERS
 
@@ -66,7 +66,7 @@ Paths to attachments that should be added to the message.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -81,7 +81,7 @@ Background carbon copy - hidden recipients of the e-mail.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -96,7 +96,7 @@ Body of the e-mail.
 ```yaml
 Type: String
 Parameter Sets: inline
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -111,7 +111,7 @@ Type of the e-mail body. The default is Text.
 ```yaml
 Type: BodyType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: HTML, Text
 
 Required: False
@@ -127,7 +127,7 @@ Carbon copy - indirect recipients of the e-mail.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -142,7 +142,7 @@ Input text that will be used as a message body.
 ```yaml
 Type: Object
 Parameter Sets: pipe
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -157,7 +157,7 @@ Flag to specify that command input is already converted to HTML.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: pipe
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -172,7 +172,7 @@ Service used to create/send message.
 ```yaml
 Type: ExchangeService
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -187,7 +187,7 @@ Subject of the created message.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -202,7 +202,7 @@ Main recipients of the message.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -211,18 +211,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.Object
 Microsoft.Exchange.WebServices.Data.ExchangeService
 
-
 ## OUTPUTS
 
 ### Microsoft.Exchange.WebServices.Data.EmailMessage
 
-
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,6 +1,7 @@
 ---
 external help file: EWS-help.xml
-online version: 
+Module Name: EWS
+online version:
 schema: 2.0.0
 ---
 
@@ -14,15 +15,15 @@ Creates new appointment.
 ### inline (Default)
 ```
 New-EWSAppointment [-Required <String[]>] [-Optional <String[]>] -Subject <String> -Body <String>
- [-BodyType <BodyType>] [-Location <String>] [-Start <DateTime>] [-Duration <TimeSpan>]
- [-Attachment <String[]>] [-Service <ExchangeService>]
+ [-BodyType <BodyType>] [-Location <String>] -Start <DateTime> -Duration <TimeSpan> [-Attachment <String[]>]
+ [-Service <ExchangeService>] [<CommonParameters>]
 ```
 
 ### pipe
 ```
 New-EWSAppointment [-Required <String[]>] [-Optional <String[]>] -Subject <String> [-BodyType <BodyType>]
- [-Location <String>] [-Start <DateTime>] [-Duration <TimeSpan>] [-Attachment <String[]>] -InputObject <Object>
- [-IsHtml] [-Service <ExchangeService>]
+ [-Location <String>] -Start <DateTime> -Duration <TimeSpan> [-Attachment <String[]>] -InputObject <Object>
+ [-IsHtml] [-Service <ExchangeService>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,12 +46,20 @@ If the body is in HTML format, use -IsHtml flag.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 PS C:\> New-EWSAppointment -Subject Dentist -Body 'Visit Dentist' -Start (Get-Date).AddDays(1) -Duration 0:30:0
 ```
 
 Creates appointment in the calendar about Dentist visit planned for tomorrow that will take half of an hour.
+
+### EXAMPLE 1
+```
+PS C:\> Get-Content Appointment.txt | New-EWSAppointment -Subject Meeting -Start (Get-Date).AddDays(1) -Duration 0:30:0
+```
+
+Creates appointment in the calendar about Meeting using contents of the file as a body.
+
 
 ## PARAMETERS
 
@@ -60,7 +69,7 @@ Paths to attachments that should be added to the new appointment.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -75,7 +84,7 @@ Body of the appointment.
 ```yaml
 Type: String
 Parameter Sets: inline
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -91,7 +100,7 @@ Text is used if not specified.
 ```yaml
 Type: BodyType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: HTML, Text
 
 Required: False
@@ -107,9 +116,9 @@ Duration of the appointment.
 ```yaml
 Type: TimeSpan
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -123,7 +132,7 @@ It's used to form appointment's body.
 ```yaml
 Type: Object
 Parameter Sets: pipe
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -138,7 +147,7 @@ Flag to specify that piped-in content is already formatted as HTML.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: pipe
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -153,7 +162,7 @@ Location of the appointment.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -168,7 +177,7 @@ List of optional attendees.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -183,7 +192,7 @@ List of required attendees.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -198,7 +207,7 @@ Service used to create new appointment.
 ```yaml
 Type: ExchangeService
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -213,9 +222,9 @@ Date/time of the appointment start.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -228,7 +237,7 @@ Subject of the appointment.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -237,18 +246,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.Object
 Microsoft.Exchange.WebServices.Data.ExchangeService
 
-
 ## OUTPUTS
 
 ### Microsoft.Exchange.WebServices.Data.Appointment
 
-
 ## NOTES
 
 ## RELATED LINKS
-

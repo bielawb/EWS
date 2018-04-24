@@ -1,6 +1,7 @@
 ---
 external help file: EWS-help.xml
-online version: 
+Module Name: EWS
+online version:
 schema: 2.0.0
 ---
 
@@ -13,7 +14,7 @@ Saves attachment (or attachments) to disk.
 
 ```
 Save-EWSAttachment [[-Path] <String>] [[-Attachment] <FileAttachment[]>] [[-Service] <ExchangeService>]
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,13 +23,20 @@ Need to be used in combination with Get-EWSAttachment.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 PS C:\> $item = Get-EWSItem -Name Inbox -Filter 'from:Sebastian and hasAttachment:true' -Limit 1
 PS C:\> Get-EWSAttachment -Item $item | Save-EWSAttachment -Path c:\temp\
 ```
 
 Saves attachment from e-mail to c:\temp\ folder.
+
+### EXAMPLE 2
+```
+PS C:\> Get-EWSItem -Name Inbox -Filter 'hasAttachment:true' -Limit 1 | Get-EWSAttachment | Save-EWSAttachment -Path c:\temp\
+```
+
+Saves attachment from e-mail to c:\temp\ folder using direct pipeline input.
 
 ## PARAMETERS
 
@@ -38,7 +46,7 @@ Attachment object that should be saved to disk (retrieved using Get-EWSAttachmen
 ```yaml
 Type: FileAttachment[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -68,7 +76,7 @@ Folder where attachments should be saved.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -83,7 +91,7 @@ Service object that will be used to get/save attachment.
 ```yaml
 Type: ExchangeService
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -108,11 +116,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Exchange.WebServices.Data.FileAttachment[]
 Microsoft.Exchange.WebServices.Data.ExchangeService
-
 
 ## OUTPUTS
 
@@ -121,4 +131,3 @@ Microsoft.Exchange.WebServices.Data.ExchangeService
 ## NOTES
 
 ## RELATED LINKS
-

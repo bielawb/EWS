@@ -1,6 +1,7 @@
 ---
 external help file: EWS-help.xml
-online version: 
+Module Name: EWS
+online version:
 schema: 2.0.0
 ---
 
@@ -14,30 +15,29 @@ Creates sub-folder in the specified parent folder.
 ### byName (Default)
 ```
 New-EWSFolder -DisplayName <String> [-FolderType <String>] -ParentName <WellKnownFolderName>
- [-Service <ExchangeService>] [-Mailbox <Mailbox>]
+ [-Service <ExchangeService>] [-Mailbox <Mailbox>] [<CommonParameters>]
 ```
 
 ### byId
 ```
 New-EWSFolder -DisplayName <String> [-FolderType <String>] -ParentId <FolderId> [-Service <ExchangeService>]
- [-Mailbox <Mailbox>]
+ [-Mailbox <Mailbox>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Function used to create folders in the folder structure of a mailbox.
 Parent folder can be specified by name (for well known folder names) or Id.
 
-
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 PS C:\> New-EWSFolder -ParentName Inbox -DisplayName FooBar
 ```
 
 Create sub-folder FooBar in the folder Inbox.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 PS C:\> Get-EWSFolder -Path Contacts\Parent | New-EWSFolder -DisplayName Child -FolderType Contacts
 ```
@@ -52,7 +52,7 @@ Display name of the created folder.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,7 +71,7 @@ Type of the folder to create. Supported types:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Calendar, Contacts, Tasks, Mail
 
 Required: False
@@ -87,7 +87,7 @@ Mailbox where folder will be created.
 ```yaml
 Type: Mailbox
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -117,7 +117,7 @@ Well known name of the parent folder (e.g. Inbox, Calendar).
 ```yaml
 Type: WellKnownFolderName
 Parameter Sets: byName
-Aliases: 
+Aliases:
 Accepted values: Calendar, Contacts, DeletedItems, Drafts, Inbox, Journal, Notes, Outbox, SentItems, Tasks, MsgFolderRoot, PublicFoldersRoot, Root, JunkEmail, SearchFolders, VoiceMail, RecoverableItemsRoot, RecoverableItemsDeletions, RecoverableItemsVersions, RecoverableItemsPurges, ArchiveRoot, ArchiveMsgFolderRoot, ArchiveDeletedItems, ArchiveRecoverableItemsRoot, ArchiveRecoverableItemsDeletions, ArchiveRecoverableItemsVersions, ArchiveRecoverableItemsPurges, SyncIssues, Conflicts, LocalFailures, ServerFailures, RecipientCache, QuickContacts, ConversationHistory, ToDoSearch
 
 Required: True
@@ -133,7 +133,7 @@ Service object that will be used to create a folder.
 ```yaml
 Type: ExchangeService
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -142,19 +142,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Exchange.WebServices.Data.FolderId
 Microsoft.Exchange.WebServices.Data.ExchangeService
 
-
 ## OUTPUTS
 
 ### Microsoft.Exchange.WebServices.Data.Folder
 
-
 ## NOTES
 
 ## RELATED LINKS
-
