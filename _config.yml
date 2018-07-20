@@ -1,1 +1,6 @@
-theme: jekyll-theme-minimal
+theme: jekyll-theme-architect
+twitter:
+  username: bielawb
+logo: /EWSModuleLogo.png
+plugins:
+  - directory
