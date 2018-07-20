@@ -52,7 +52,7 @@ Sends e-mail to MrBeans@gmail.com using last connected service with subject Test
 ### EXAMPLE 2
 ```
 PS C:\> $html = Get-ChildItem | Select-Object -Property Name, Length, LastWriteTime | ConvertTo-Html 
-PS C:\> $html | New-EWSMessage -To MrBeans@gmail.com -Subject Test -Body 'Mic test: 1... 2... 3...' -IsHtml -BodyType HTML
+PS C:\> $html | New-EWSMessage -To MrBeans@gmail.com -Subject Test -IsHtml -BodyType HTML
 ```
 
 Generates HTML document from the output of Get-ChildITem
