@@ -24,18 +24,22 @@ function Save-EWSAttachment {
         }
 
         foreach ($singleAttachment in $Attachment) {
-            $fullPath = Join-Path -Path $Path -ChildPath $singleAttachment.Name
+            $childName = $singleAttachment.Name
+            foreach ($character in [IO.Path]::GetInvalidFileNameChars()) {
+                $childName = $childName.Replace($character, '_')
+            }
+            $fullPath = Join-Path -Path $Path -ChildPath $childName
             if ($PSCmdlet.ShouldProcess(
                     $singleAttachment.Name,
-                    "Save to $Path"
-            )) { 
+                    "Save to $fullPath"
+            )) {
                 $singleAttachment.Load(
                     $fullPath
                 )
             }
         }
     }
-    
+
     end {
         if (-not $Service) {
             Write-Warning 'No connection defined. Use Connect-EWSService first!'
