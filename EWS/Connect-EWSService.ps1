@@ -19,7 +19,7 @@ function Connect-EWSService {
         $Credential = [Management.Automation.PSCredential]::Empty
     )
 
-    $exchangeService = New-Object Microsoft.Exchange.WebServices.Data.ExchangeService $Version
+    $exchangeService = New-Object -TypeName Microsoft.Exchange.WebServices.Data.ExchangeService -ArgumentList $Version
 
     if ($Credential -ne [Management.Automation.PSCredential]::Empty) {
         $exchangeService.UseDefaultCredentials = $false
@@ -34,7 +34,8 @@ function Connect-EWSService {
         try {
             $exchangeService.AutodiscoverUrl($Mailbox,{[bool]$AllowRedirect})
         } catch {
-            throw "Failed to identify Url for $Mailbox - $_"
+            Write-Error -Message "Failed to identify Url for $Mailbox - $_"
+            return
         }
     }
 
