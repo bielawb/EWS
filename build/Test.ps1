@@ -1,5 +1,5 @@
 Import-Module -Name Pester
-Import-Module -Name .\EWS
+Import-Module -Name .\EWS -ArgumentList useScript
 Import-Module -Name .\tests\Assertions.psm1
 $out = Invoke-Pester -Script .\tests\ -OutputFormat NUnitXml -OutputFile .\tests\results.xml -PassThru
 try {
